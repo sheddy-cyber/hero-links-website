@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Computer Accessories & Laptops in Ibeju-Lekki, Lagos",
     description:
-      "Browse and buy laptops, printers, and computer accessories from Modem Computer Technology in Ibeju-Lekki, Lagos.",
+      "Browse and buy laptops, printers, and computer accessories from Hero Link Systems Limited in Ibeju-Lekki, Lagos.",
     images: ["/images/computer_lab.jpg"],
   },
 };
@@ -23,8 +23,8 @@ export default function AccessoriesPage() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Store",
-    name: "Modem Computer Technology - Accessories Store",
-    url: "https://www.modemcomputertechnology.com/accessories",
+    name: "Hero Link Systems Limited - Accessories Store",
+    url: "https://www.herolinksystems.com/accessories",
     telephone: "+2348032310325",
     email: "modemcomputers247@gmail.com",
     description: `Computer accessories, laptops, and peripherals store in Ibeju-Lekki, Lagos. Over ${accessories.length} quality products available.`,
@@ -48,7 +48,7 @@ export default function AccessoriesPage() {
   return (
     <>
       <Header />
-      <main id="main" className="pt-[70px]">
+      <main id="main" className="pt-6">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

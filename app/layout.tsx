@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans, Poppins } from "next/font/google";
+import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
+import SmoothScroll from "@/components/SmoothScroll";
 
-const plusJakarta = Plus_Jakarta_Sans({
+const inter = Inter({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800"],
-  variable: "--font-plus-jakarta",
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-inter",
   display: "swap",
 });
 
@@ -17,17 +18,17 @@ const poppins = Poppins({
 });
 
 const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL || "https://www.modemcomputertechnology.com";
+  process.env.NEXT_PUBLIC_SITE_URL || "https://www.herolinksystems.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
     default:
-      "Computer Training Centre in Ibeju-Lekki, Lagos | Modem Computer Technology",
-    template: "%s | Modem Computer Technology",
+      "Computer Training Centre in Ibeju-Lekki, Lagos | Hero Link Systems Limited",
+    template: "%s | Hero Link Systems Limited",
   },
   description:
-    "Modem Computer Technology is a leading computer training centre in Ibeju-Lekki, Lagos. We offer web design, graphic design, computer maintenance, and sales of computers & accessories.",
+    "Hero Link Systems Limited is a leading computer training centre in Ibeju-Lekki, Lagos. We offer web design, graphic design, computer maintenance, and sales of computers & accessories.",
   keywords: [
     "computer training Lagos",
     "web design training Ibeju-Lekki",
@@ -36,22 +37,22 @@ export const metadata: Metadata = {
     "laptop sales Nigeria",
     "IT training Lagos",
   ],
-  authors: [{ name: "Modem Computer Technology" }],
+  authors: [{ name: "Hero Link Systems Limited" }],
   robots: { index: true, follow: true },
   alternates: { canonical: "/" },
   openGraph: {
     type: "website",
     locale: "en_NG",
     url: siteUrl,
-    siteName: "Modem Computer Technology",
-    title: "Modem Computer Technology — Professional IT Training in Lagos",
+    siteName: "Hero Link Systems Limited",
+    title: "Hero Link Systems Limited — Professional IT Training in Lagos",
     description:
       "Practical computer training, maintenance and procurement in Ibeju-Lekki, Lagos. Learn web design, graphic design, and more.",
     images: [{ url: "/images/computer_lab.jpg", width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Modem Computer Technology — IT Training in Lagos",
+    title: "Hero Link Systems Limited — IT Training in Lagos",
     description: "Professional computer training in Ibeju-Lekki, Lagos",
     images: ["/images/computer_lab.jpg"],
   },
@@ -69,8 +70,8 @@ export default function RootLayout({
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "EducationalOrganization",
-    name: "Modem Computer Technology",
-    alternateName: "Modem Computer Training Centre",
+    name: "Hero Link Systems Limited",
+    alternateName: "Hero Link Systems",
     url: siteUrl,
     logo: `${siteUrl}/images/logo1.png`,
     image: `${siteUrl}/images/computer_lab.jpg`,
@@ -115,7 +116,7 @@ export default function RootLayout({
           description: "Computer fundamentals, typing, MS Office suite training",
           provider: {
             "@type": "EducationalOrganization",
-            name: "Modem Computer Technology",
+            name: "Hero Link Systems Limited",
           },
         },
         {
@@ -124,7 +125,7 @@ export default function RootLayout({
           description: "CorelDraw, Adobe Photoshop training",
           provider: {
             "@type": "EducationalOrganization",
-            name: "Modem Computer Technology",
+            name: "Hero Link Systems Limited",
           },
         },
         {
@@ -133,7 +134,7 @@ export default function RootLayout({
           description: "HTML, CSS, JavaScript web development training",
           provider: {
             "@type": "EducationalOrganization",
-            name: "Modem Computer Technology",
+            name: "Hero Link Systems Limited",
           },
         },
       ],
@@ -143,9 +144,10 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${plusJakarta.variable} ${poppins.variable}`}
+      className={`${inter.variable} ${poppins.variable}`}
     >
       <body>
+        <SmoothScroll />
         <a className="skip-link" href="#main">
           Skip to content
         </a>

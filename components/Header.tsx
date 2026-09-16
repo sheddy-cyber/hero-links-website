@@ -11,7 +11,7 @@ import {
   Mail,
   MapPin,
   Home,
-  Info,
+  Building,
   GraduationCap,
   Wrench,
   ShoppingBag,
@@ -20,7 +20,7 @@ import {
 
 const navLinks = [
   { href: "/#home", label: "Home", icon: Home },
-  { href: "/#about", label: "About", icon: Info },
+  { href: "/#about", label: "About", icon: Building },
   { href: "/#courses", label: "Courses", icon: GraduationCap },
   { href: "/#services", label: "Services", icon: Wrench },
   { href: "/accessories", label: "Accessories", icon: ShoppingBag },
@@ -119,105 +119,112 @@ export default function Header() {
 
   return (
     <>
-      {/* ── HEADER BAR ── */}
+      {/* ── FLOATING ISLAND NAVIGATION ── */}
       <header
         role="banner"
-        style={{ transition: "transform 0.3s ease, box-shadow 0.3s ease" }}
+        style={{ transition: "transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease" }}
         className={[
-          "site-header fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm",
-          scrolled ? "shadow-md" : "shadow-sm",
-          hidden ? "-translate-y-full hide-header" : "translate-y-0",
+          "site-header fixed top-6 left-1/2 -translate-x-1/2 z-50",
+          "bg-white/90 backdrop-blur-xl",
+          "rounded-2xl shadow-2xl shadow-slate-900/10 border border-white/50",
+          hidden ? "-translate-y-full opacity-0" : "translate-y-0 opacity-100",
         ].join(" ")}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-[70px]">
-            {/* Brand */}
-            <Link
-              href="/"
-              className="flex items-center gap-3 group shrink-0"
-              onClick={close}
-            >
+        <div className="flex items-center gap-3 px-4 py-3">
+          {/* Brand */}
+          <Link
+            href="/"
+            className="flex items-center gap-3 group shrink-0 pr-5 border-r border-slate-200/50"
+            onClick={close}
+          >
+            <div className="relative">
               <Image
                 src="/images/logo1.png"
-                alt="Modem Computer Technology Logo"
-                width={52}
-                height={46}
-                className="rounded-lg"
+                alt="Hero Link Systems Limited Logo"
+                width={38}
+                height={34}
+                className="rounded-lg transition-transform group-hover:scale-110"
                 priority
               />
-              <div>
-                <div className="font-heading font-bold text-[13px] sm:text-[15px] text-slate-900 leading-tight group-hover:text-blue-600 transition-colors">
-                  Modem Computer Technology
-                </div>
-                <div className="hidden sm:block text-[10px] text-slate-500 font-medium tracking-wide">
-                  IT Training · Maintenance · Sales · Procurement
-                </div>
-              </div>
-            </Link>
-
-            {/* Desktop nav */}
-            <nav aria-label="Main navigation" className="hidden lg:block">
-              <ul className="flex items-center gap-1">
-                {navLinks.map(({ href, label }) => {
-                  const isActive = href === activeLink;
-                  return (
-                    <li key={href}>
-                      <Link
-                        href={href}
-                        className={`px-3 py-2 text-sm rounded-lg transition-all ${isActive ? "font-semibold text-blue-600 bg-blue-50" : "font-medium text-slate-700 hover:text-blue-600 hover:bg-blue-50"}`}
-                      >
-                        {label}
-                      </Link>
-                    </li>
-                  );
-                })}
-              </ul>
-            </nav>
-
-            {/* Actions */}
-            <div className="flex items-center gap-2">
-              <a
-                href="/docs/Course Outline.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hidden sm:flex items-center gap-1.5 px-3 py-2 text-sm font-semibold text-blue-600 border border-blue-200 rounded-lg hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-all"
-              >
-                <Download size={14} />
-                <span>Course Outline</span>
-              </a>
-
-              {/* Hamburger — animates into X */}
-              <button
-                onClick={() => setMenuOpen((o) => !o)}
-                aria-label="Toggle navigation menu"
-                aria-expanded={menuOpen}
-                aria-controls="mobile-nav"
-                className="lg:hidden relative w-10 h-10 flex items-center justify-center rounded-lg text-slate-700 hover:bg-slate-100 transition-colors"
-              >
-                <span
-                  className="absolute transition-all duration-300"
-                  style={{
-                    opacity: menuOpen ? 0 : 1,
-                    transform: menuOpen
-                      ? "rotate(90deg) scale(0.5)"
-                      : "rotate(0deg) scale(1)",
-                  }}
-                >
-                  <Menu size={22} />
-                </span>
-                <span
-                  className="absolute transition-all duration-300"
-                  style={{
-                    opacity: menuOpen ? 1 : 0,
-                    transform: menuOpen
-                      ? "rotate(0deg) scale(1)"
-                      : "rotate(-90deg) scale(0.5)",
-                  }}
-                >
-                  <X size={22} />
-                </span>
-              </button>
+              <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 to-orange-500 rounded-lg opacity-0 group-hover:opacity-20 blur transition-opacity" />
             </div>
+            <div className="hidden sm:block">
+              <div className="font-heading font-bold text-[10px] text-slate-900 leading-tight group-hover:text-blue-600 transition-colors">
+                Hero Link Systems Limited
+              </div>
+              <div className="text-[9px] text-slate-600 font-medium tracking-wide">
+                Power. Connect. Advance.
+              </div>
+            </div>
+          </Link>
+
+          {/* Desktop nav */}
+          <nav aria-label="Main navigation" className="hidden lg:flex items-center gap-1">
+            <ul className="flex items-center gap-1">
+              {navLinks.map(({ href, label, icon: Icon }) => {
+                const isActive = href === activeLink;
+                return (
+                  <li key={href} className="list-none">
+                    <Link
+                      href={href}
+                      className={`relative px-3 py-2 text-xs font-medium rounded-lg transition-all duration-300 flex items-center gap-1.5 ${
+                        isActive
+                          ? "text-blue-600 bg-gradient-to-r from-blue-50 to-blue-100/50"
+                          : "text-slate-600 hover:text-blue-600 hover:bg-slate-50"
+                      }`}
+                    >
+                      <Icon size={14} className={isActive ? "text-blue-600" : "text-slate-400"} />
+                      <span className="relative">{label}</span>
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+          </nav>
+
+          {/* Actions */}
+          <div className="flex items-center gap-3 pl-3 border-l border-slate-200/50">
+            <a
+              href="/docs/Course Outline.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden sm:flex items-center gap-1.5 px-3 py-2 text-xs font-semibold text-blue-600 bg-blue-50/50 border border-blue-200/50 rounded-xl hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-all duration-300 whitespace-nowrap"
+            >
+              <Download size={12} />
+              <span>Course Outline</span>
+            </a>
+
+            {/* Hamburger — unique design */}
+            <button
+              onClick={() => setMenuOpen((o) => !o)}
+              aria-label="Toggle navigation menu"
+              aria-expanded={menuOpen}
+              aria-controls="mobile-nav"
+              className="lg:hidden relative w-9 h-9 flex items-center justify-center rounded-xl bg-slate-100 text-slate-700 hover:bg-blue-600 hover:text-white transition-all duration-300"
+            >
+              <span
+                className="absolute transition-all duration-300"
+                style={{
+                  opacity: menuOpen ? 0 : 1,
+                  transform: menuOpen
+                    ? "rotate(90deg) scale(0.5)"
+                    : "rotate(0deg) scale(1)",
+                }}
+              >
+                <Menu size={18} />
+              </span>
+              <span
+                className="absolute transition-all duration-300"
+                style={{
+                  opacity: menuOpen ? 1 : 0,
+                  transform: menuOpen
+                    ? "rotate(0deg) scale(1)"
+                    : "rotate(-90deg) scale(0.5)",
+                }}
+              >
+                <X size={18} />
+              </span>
+            </button>
           </div>
         </div>
       </header>
@@ -233,58 +240,82 @@ export default function Header() {
         }}
       />
 
-      {/* ── DRAWER ── slides in from right, always in DOM */}
+      {/* ── DRAWER ── modern floating panel */}
       <div
         id="mobile-nav"
         role="dialog"
         aria-modal="true"
         aria-label="Navigation menu"
-        className="lg:hidden fixed top-0 right-0 bottom-0 z-50 w-[78vw] max-w-[320px] bg-white shadow-2xl flex flex-col"
+        className="lg:hidden fixed top-6 right-4 bottom-6 z-50 w-[85vw] max-w-[360px] bg-white/95 backdrop-blur-xl rounded-3xl shadow-2xl shadow-slate-900/20 border border-white/50 flex flex-col"
         style={{
-          transform: menuOpen ? "translateX(0)" : "translateX(100%)",
-          transition: "transform 0.35s cubic-bezier(0.4, 0, 0.2, 1)",
+          transform: menuOpen ? "translateX(0)" : "translateX(120%)",
+          transition: "transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
         }}
       >
-        {/* Drawer header — just the close button */}
-        <div className="flex items-center justify-end px-4 py-3 border-b border-slate-100">
+        {/* Drawer header */}
+        <div className="flex items-center justify-between px-5 py-4 border-b border-slate-100/50">
+          <div className="flex items-center gap-2">
+            <Image
+              src="/images/logo1.png"
+              alt="Hero Link Systems Limited Logo"
+              width={32}
+              height={28}
+              className="rounded-lg"
+            />
+            <div>
+              <span className="font-heading font-bold text-[10px] text-slate-900 leading-tight">Hero Link Systems Limited</span>
+              <div className="text-[8px] text-slate-600 font-medium tracking-wide">
+                Power. Connect. Advance.
+              </div>
+            </div>
+          </div>
           <button
             onClick={close}
             aria-label="Close menu"
-            className="w-8 h-8 flex items-center justify-center rounded-lg text-slate-500 hover:bg-slate-100 transition-colors"
+            className="w-8 h-8 flex items-center justify-center rounded-xl bg-slate-100 text-slate-600 hover:bg-blue-600 hover:text-white transition-all duration-300"
           >
-            <X size={18} />
+            <X size={16} />
           </button>
         </div>
 
         {/* Nav links */}
         <nav
           aria-label="Mobile navigation"
-          className="flex-1 overflow-y-auto px-3 py-4"
+          className="flex-1 overflow-y-auto px-4 py-5"
         >
-          <ul className="space-y-1">
+          <ul className="space-y-2">
             {navLinks.map(({ href, label, icon: Icon }, i) => {
               const isActive = href === activeLink;
               return (
                 <li
                   key={href}
+                  className="list-none"
                   style={{
-                    transitionDelay: menuOpen ? `${i * 45}ms` : "0ms",
-                    transform: menuOpen ? "translateX(0)" : "translateX(24px)",
+                    transitionDelay: menuOpen ? `${i * 50}ms` : "0ms",
+                    transform: menuOpen ? "translateX(0)" : "translateX(20px)",
                     opacity: menuOpen ? 1 : 0,
-                    transition: "transform 0.3s ease, opacity 0.3s ease",
+                    transition: "transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease",
                   }}
                 >
                   <Link
                     href={href}
                     onClick={close}
-                    className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-colors ${isActive ? "bg-blue-50 text-blue-700" : "text-slate-700 hover:bg-blue-50 hover:text-blue-600"}`}
+                    className={`flex items-center gap-3 px-4 py-3.5 rounded-2xl transition-all duration-300 ${
+                      isActive
+                        ? "bg-gradient-to-r from-blue-50 to-blue-100/50 text-blue-700 shadow-sm"
+                        : "text-slate-700 hover:bg-slate-50 hover:text-blue-600"
+                    }`}
                   >
                     <span
-                      className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 transition-colors ${isActive ? "bg-blue-100 text-blue-600" : "bg-slate-100 text-slate-500 group-hover:bg-blue-100 group-hover:text-blue-600"}`}
+                      className={`w-9 h-9 rounded-xl flex items-center justify-center shrink-0 transition-all duration-300 ${
+                        isActive
+                          ? "bg-blue-500 text-white shadow-md shadow-blue-500/30"
+                          : "bg-slate-100 text-slate-500 group-hover:bg-blue-100 group-hover:text-blue-600"
+                      }`}
                     >
-                      <Icon size={15} />
+                      <Icon size={16} />
                     </span>
-                    <span className="font-medium text-sm">{label}</span>
+                    <span className="font-semibold text-sm">{label}</span>
                   </Link>
                 </li>
               );
@@ -292,7 +323,7 @@ export default function Header() {
           </ul>
 
           {/* Divider */}
-          <div className="my-4 border-t border-slate-100" />
+          <div className="my-5 border-t border-slate-100/50" />
 
           {/* PDF download */}
           <a
@@ -301,51 +332,51 @@ export default function Header() {
             rel="noopener noreferrer"
             onClick={close}
             style={{
-              transitionDelay: menuOpen ? `${navLinks.length * 45}ms` : "0ms",
-              transform: menuOpen ? "translateX(0)" : "translateX(24px)",
+              transitionDelay: menuOpen ? `${navLinks.length * 50}ms` : "0ms",
+              transform: menuOpen ? "translateX(0)" : "translateX(20px)",
               opacity: menuOpen ? 1 : 0,
-              transition: "transform 0.3s ease, opacity 0.3s ease",
+              transition: "transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease",
             }}
-            className="flex items-center gap-3 px-4 py-3 rounded-xl bg-blue-50 hover:bg-blue-100 text-blue-700 transition-colors"
+            className="flex items-center gap-3 px-4 py-3.5 rounded-2xl bg-gradient-to-r from-blue-50 to-blue-100/50 hover:from-blue-100 hover:to-blue-200/50 text-blue-700 transition-all duration-300 shadow-sm"
           >
-            <span className="w-8 h-8 rounded-lg bg-blue-100 flex items-center justify-center shrink-0">
-              <Download size={15} className="text-blue-600" />
+            <span className="w-9 h-9 rounded-xl bg-blue-500 flex items-center justify-center shrink-0 shadow-md shadow-blue-500/30">
+              <Download size={16} className="text-white" />
             </span>
             <div>
               <div className="font-semibold text-sm">Course Outline</div>
-              <div className="text-[11px] text-blue-500">Download PDF</div>
+              <div className="text-[11px] text-blue-600">Download PDF</div>
             </div>
           </a>
         </nav>
 
         {/* Drawer footer — contact snapshot */}
         <div
-          className="border-t border-slate-100 px-5 py-4 bg-slate-50 space-y-2.5"
+          className="border-t border-slate-100/50 px-5 py-4 bg-gradient-to-b from-slate-50 to-white space-y-3"
           style={{
             transitionDelay: menuOpen
-              ? `${(navLinks.length + 1) * 45}ms`
+              ? `${(navLinks.length + 1) * 50}ms`
               : "0ms",
-            transform: menuOpen ? "translateY(0)" : "translateY(12px)",
+            transform: menuOpen ? "translateY(0)" : "translateY(16px)",
             opacity: menuOpen ? 1 : 0,
-            transition: "transform 0.3s ease, opacity 0.3s ease",
+            transition: "transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease",
           }}
         >
           <a
             href="tel:+2348032310325"
-            className="flex items-center gap-2.5 text-xs text-slate-500 hover:text-blue-600 transition-colors"
+            className="flex items-center gap-2.5 text-xs text-slate-600 hover:text-blue-600 transition-colors font-medium"
           >
-            <Phone size={13} className="text-blue-400 shrink-0" />
+            <Phone size={14} className="text-blue-500 shrink-0" />
             +234 803 231 0325
           </a>
           <a
             href="mailto:modemcomputers247@gmail.com"
-            className="flex items-center gap-2.5 text-xs text-slate-500 hover:text-blue-600 transition-colors break-all"
+            className="flex items-center gap-2.5 text-xs text-slate-600 hover:text-blue-600 transition-colors break-all font-medium"
           >
-            <Mail size={13} className="text-blue-400 shrink-0" />
+            <Mail size={14} className="text-blue-500 shrink-0" />
             modemcomputers247@gmail.com
           </a>
-          <div className="flex items-start gap-2.5 text-xs text-slate-400">
-            <MapPin size={13} className="text-blue-400 shrink-0 mt-0.5" />
+          <div className="flex items-start gap-2.5 text-xs text-slate-500">
+            <MapPin size={14} className="text-blue-500 shrink-0 mt-0.5" />
             Elemoro Shopping Complex, Bogije, Ibeju-Lekki
           </div>
         </div>

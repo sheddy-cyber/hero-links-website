@@ -53,30 +53,34 @@ export default function AccessoriesGallery() {
   const [filter, setFilter]     = useState<Category>("all");
   const [page, setPage]         = useState<number>(1);
   const [selected, setSelected] = useState<AccessoryItem | null>(null);
-  const [filterTop, setFilterTop] = useState<number>(70);
-  const headerRef = useRef<Element | null>(null);
+  const [filterTop, setFilterTop] = useState<number>(0);
+  const [filterVisible, setFilterVisible] = useState(true);
+  const gridRef = useRef<HTMLDivElement>(null);
 
-  // Track the header height so the sticky filter bar sits just below it,
-  // even when the header hides/shows on scroll.
+  // Track when the gallery grid ends to fade out the filter bar
   useEffect(() => {
-    headerRef.current = document.querySelector(".site-header");
+    const handleScroll = () => {
+      const grid = gridRef.current;
+      if (!grid) return;
 
-    const update = () => {
-      const h = headerRef.current as HTMLElement | null;
-      if (!h) { setFilterTop(0); return; }
-      const hidden = h.classList.contains("hide-header");
-      setFilterTop(hidden ? 0 : h.offsetHeight);
+      const gridRect = grid.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+
+      // Hide filter bar when grid is scrolled past viewport
+      if (gridRect.bottom < 100) {
+        setFilterVisible(false);
+      } else {
+        setFilterVisible(true);
+      }
     };
 
-    update();
-    window.addEventListener("scroll", update, { passive: true });
-    window.addEventListener("resize", update, { passive: true });
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll(); // Initial check
 
     return () => {
-      window.removeEventListener("scroll", update);
-      window.removeEventListener("resize", update);
+      window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, [filter, page]); // Re-observe when filter or page changes
 
   const filtered: AccessoryItem[] =
     filter === "all"
@@ -95,14 +99,16 @@ export default function AccessoriesGallery() {
 
   return (
     <div>
-      {/* Sticky wrapper — sticky only works within its parent.
-          By closing this div before the CTA section, the filter bar
-          naturally scrolls away when the grid ends. */}
-      <div>
       {/* ── FILTER BAR ── */}
       <div
-        className="filter-bar z-30 bg-white border-b border-slate-100 shadow-sm"
-        style={{ position: "sticky", top: filterTop, transition: "top 0.3s ease" }}
+        className="filter-bar z-30 bg-white border-b border-slate-100 shadow-sm transition-opacity duration-300"
+        style={{ 
+          position: "sticky", 
+          top: filterTop, 
+          transition: "top 0.3s ease",
+          opacity: filterVisible ? 1 : 0,
+          pointerEvents: filterVisible ? "auto" : "none"
+        }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="filter-scroll-row flex items-center gap-2 py-3 overflow-x-auto">
@@ -146,7 +152,7 @@ export default function AccessoriesGallery() {
       </div>
 
       {/* ── PRODUCT GRID ── */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-10">
+      <div ref={gridRef} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-10">
         {visible.length === 0 ? (
           <p className="py-20 text-center text-slate-400 text-sm">
             No items found in this category.
@@ -202,8 +208,6 @@ export default function AccessoriesGallery() {
           )}
         </div>
       </div>
-
-      </div>{/* end sticky wrapper */}
 
       {/* ── READY TO PURCHASE CTA ── */}
       <section className="bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 py-16">

@@ -42,7 +42,6 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ContactForm from "@/components/ContactForm";
 import ScrollAnimator from "@/components/ScrollAnimator";
-import { StatBadge } from "@/components/StatsCounter";
 
 const courses = [
   {
@@ -145,121 +144,118 @@ export default function Home() {
     <>
       <Header />
       <ScrollAnimator />
-      <main id="main" className="pt-[70px]">
+      <main id="main" className="pt-6">
         {/* ── HERO ── */}
         <section
           id="home"
           aria-labelledby="hero-heading"
-          className="relative bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 text-white overflow-hidden"
+          className="relative min-h-[90vh] bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 text-white overflow-hidden"
         >
-          {/* Background pattern */}
+          {/* Animated background patterns */}
           <div
-            className="absolute inset-0 opacity-5"
+            className="absolute inset-0 opacity-10"
             style={{
               backgroundImage:
                 "radial-gradient(circle at 1px 1px, white 1px, transparent 0)",
-              backgroundSize: "40px 40px",
+              backgroundSize: "60px 60px",
+              animation: "gridMove 20s linear infinite",
             }}
           />
-          <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full bg-blue-600/10 blur-3xl -translate-y-1/2 translate-x-1/4" />
-          <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-orange-500/10 blur-3xl translate-y-1/2 -translate-x-1/4" />
+          <div className="absolute top-0 right-0 w-[800px] h-[800px] rounded-full bg-blue-600/20 blur-3xl -translate-y-1/2 translate-x-1/4 animate-pulse" />
+          <div className="absolute bottom-0 left-0 w-[600px] h-[600px] rounded-full bg-orange-500/15 blur-3xl translate-y-1/2 -translate-x-1/4 animate-pulse" style={{ animationDelay: "1s" }} />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] rounded-full bg-purple-500/10 blur-3xl animate-pulse" style={{ animationDelay: "2s" }} />
 
-          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 lg:pt-14 pb-20 lg:pb-28">
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 lg:pt-24 pb-20 lg:pb-32">
             <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
               {/* Left */}
-              <div>
-                <div className="inline-flex items-center gap-2 bg-blue-500/20 border border-blue-400/30 rounded-full px-4 py-1.5 mb-6 text-sm font-medium text-blue-200">
-                  <Award size={14} />
+              <div className="space-y-8">
+                <div className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-500/20 to-orange-500/20 border border-blue-400/30 rounded-full px-5 py-2 text-sm font-medium text-blue-200 backdrop-blur-sm">
+                  <Award size={16} className="text-orange-400" />
                   <span>Certified Training Center</span>
                 </div>
                 <h1
                   id="hero-heading"
-                  className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6"
+                  className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight"
                 >
                   Build Real Skills.{" "}
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-orange-400">
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-orange-400">
                     Get Hired.
-                  </span>{" "}
-                  Start Your Tech Career.
+                  </span>
                 </h1>
-                <p className="text-lg text-blue-100 leading-relaxed mb-8 max-w-lg">
+                <p className="text-lg lg:text-xl text-blue-100/90 leading-relaxed max-w-xl">
                   Hands-on courses in desktop publishing, graphic design, web
                   design, computer maintenance, and procurement of office
                   equipment — delivered in Ibeju-Lekki, Lagos.
                 </p>
 
-                <div className="flex flex-wrap gap-3 mb-10">
+                <div className="flex flex-wrap gap-4">
                   <Link
                     href="#courses"
-                    className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-xl shadow-lg shadow-blue-500/30 transition-all hover:scale-105"
+                    className="group inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 text-white font-semibold rounded-2xl shadow-xl shadow-blue-500/30 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/40"
                   >
-                    <GraduationCap size={18} />
-                    Explore Courses
+                    <GraduationCap size={20} />
+                    <span>Explore Courses</span>
+                    <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                   </Link>
                   <Link
                     href="#contact"
-                    className="inline-flex items-center gap-2 px-6 py-3 bg-white/10 hover:bg-white/20 border border-white/20 text-white font-semibold rounded-xl backdrop-blur-sm transition-all"
+                    className="inline-flex items-center gap-2 px-8 py-4 bg-white/10 hover:bg-white/20 border border-white/30 text-white font-semibold rounded-2xl backdrop-blur-md transition-all duration-300 hover:scale-105"
                   >
-                    <Calendar size={18} />
-                    Book a Visit
+                    <Calendar size={20} />
+                    <span>Book a Visit</span>
                   </Link>
                 </div>
 
-                <ul className="space-y-3 text-sm text-blue-200">
-                  <li className="flex items-start gap-2">
-                    <MapPin
-                      size={15}
-                      className="shrink-0 mt-0.5 text-orange-400"
-                    />
-                    <span>
-                      <strong className="text-white">Location:</strong> Elemoro
-                      Shopping Complex, Bogije Bus-stop, Ibeju-Lekki, Lagos
-                      State, Nigeria.
-                    </span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <Phone size={15} className="shrink-0 text-orange-400" />
-                    <span>
-                      <strong className="text-white">Tel:</strong>{" "}
-                      <a
-                        href="tel:+2348032310325"
-                        className="hover:text-white transition-colors"
-                      >
-                        +234 803 231 0325
-                      </a>
-                    </span>
-                  </li>
-                </ul>
+                <div className="flex items-center gap-6 text-sm text-blue-200/80">
+                  <div className="flex items-center gap-2">
+                    <MapPin size={16} className="text-orange-400" />
+                    <span>Ibeju-Lekki, Lagos</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Phone size={16} className="text-blue-400" />
+                    <a href="tel:+2348032310325" className="hover:text-white transition-colors">
+                      +234 803 231 0325
+                    </a>
+                  </div>
+                </div>
               </div>
 
               {/* Right */}
-              <div className="flex flex-col items-center gap-5">
-                <div className="relative w-full rounded-2xl overflow-hidden shadow-2xl shadow-black/40">
+              <div className="flex flex-col items-center gap-6">
+                <div className="relative w-full rounded-3xl overflow-hidden shadow-2xl shadow-black/50 group">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent z-10" />
                   <Image
                     src="/images/computer_lab.jpg"
                     alt="Modern computer lab with students learning at workstations"
                     width={600}
                     height={450}
-                    className="w-full object-cover"
+                    className="w-full object-cover transform group-hover:scale-105 transition-transform duration-700"
                     priority
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+                  <div className="absolute bottom-0 left-0 right-0 p-6 z-20">
+                    <div className="inline-flex items-center gap-2 bg-blue-600/90 backdrop-blur-sm rounded-full px-4 py-2 text-sm font-medium text-white">
+                      <PlayCircle size={16} />
+                      <span>State-of-the-art Facilities</span>
+                    </div>
+                  </div>
                 </div>
 
-                {/* Stats — below the image, full width */}
-                <div className="flex gap-3 w-full">
-                  <StatBadge
-                    value={200}
-                    suffix="+"
-                    label="Students Trained"
-                    icon={<Users size={20} />}
-                  />
-                  <StatBadge
-                    value={100}
-                    suffix="%"
-                    label="Satisfied Students"
-                    icon={<Briefcase size={20} />}
-                  />
+                {/* Stats — enhanced cards */}
+                <div className="grid grid-cols-2 gap-4 w-full">
+                  <div className="bg-gradient-to-br from-blue-600/20 to-blue-700/20 backdrop-blur-sm rounded-2xl p-5 border border-blue-500/30">
+                    <div className="flex items-center gap-2 mb-2">
+                      <Users size={20} className="text-blue-400" />
+                      <span className="text-3xl font-bold text-white">200+</span>
+                    </div>
+                    <div className="text-sm text-blue-200">Students Trained</div>
+                  </div>
+                  <div className="bg-gradient-to-br from-orange-500/20 to-orange-600/20 backdrop-blur-sm rounded-2xl p-5 border border-orange-500/30">
+                    <div className="flex items-center gap-2 mb-2">
+                      <Briefcase size={20} className="text-orange-400" />
+                      <span className="text-3xl font-bold text-white">100%</span>
+                    </div>
+                    <div className="text-sm text-orange-200">Satisfaction Rate</div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -273,35 +269,35 @@ export default function Home() {
           className="py-20 lg:py-28 bg-white"
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
+            <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
               <div className="animate-on-scroll">
-                <span className="inline-block text-xs font-bold tracking-widest text-blue-600 uppercase mb-3">
+                <span className="inline-block text-xs font-bold tracking-widest text-blue-600 uppercase mb-4">
                   About Us
                 </span>
                 <h2
                   id="about-heading"
-                  className="font-heading text-3xl sm:text-4xl font-bold text-slate-900 mb-5"
+                  className="font-heading text-4xl sm:text-5xl font-bold text-slate-900 mb-6"
                 >
                   Building Nigeria&apos;s Tech Workforce
                 </h2>
-                <p className="text-slate-500 leading-relaxed mb-8">
+                <p className="text-slate-600 text-lg leading-relaxed mb-10">
                   We deliver practical, job-ready training for individuals and
                   organisations. Our instructors are industry practitioners who
                   emphasise real-world projects, internships and post-training
                   support.
                 </p>
 
-                <ul className="space-y-4 mb-8">
+                <ul className="space-y-5 mb-10">
                   {features.map(({ icon: Icon, title, desc }) => (
                     <li key={title} className="flex gap-4">
-                      <div className="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center shrink-0">
-                        <Icon size={18} className="text-blue-600" />
+                      <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center shrink-0">
+                        <Icon size={20} className="text-blue-600" />
                       </div>
                       <div>
-                        <strong className="text-slate-900 text-sm">
+                        <strong className="text-slate-900 text-base">
                           {title}
                         </strong>
-                        <p className="text-slate-500 text-sm mt-0.5">{desc}</p>
+                        <p className="text-slate-600 text-sm mt-1">{desc}</p>
                       </div>
                     </li>
                   ))}
@@ -311,9 +307,9 @@ export default function Home() {
                   href="/docs/Course Outline.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-sm font-semibold text-blue-600 hover:text-blue-700 transition-colors"
+                  className="inline-flex items-center gap-2 text-base font-semibold text-blue-600 hover:text-blue-700 transition-colors"
                 >
-                  <FileText size={15} />
+                  <FileText size={18} />
                   Download full course outline (PDF)
                 </a>
               </div>
@@ -322,32 +318,36 @@ export default function Home() {
                 className="animate-on-scroll"
                 style={{ transitionDelay: "0.15s" }}
               >
-                <div className="relative rounded-2xl overflow-hidden shadow-xl group">
+                <div className="relative rounded-3xl overflow-hidden shadow-2xl group">
                   <Image
                     src="/images/codescreen.jpeg"
                     alt="Computer lab training session showing code on screen"
                     width={600}
                     height={450}
-                    className="w-full object-cover"
+                    className="w-full object-cover transform group-hover:scale-105 transition-transform duration-700"
                     loading="lazy"
                   />
-                  <div className="absolute inset-0 bg-black/30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer">
-                    <div className="flex items-center gap-2 text-white font-semibold">
-                      <PlayCircle size={40} />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+                  <div className="absolute bottom-6 left-6 right-6">
+                    <div className="inline-flex items-center gap-2 bg-white/90 backdrop-blur-sm rounded-full px-4 py-2 text-sm font-medium text-slate-900">
+                      <PlayCircle size={18} className="text-blue-600" />
+                      <span>Watch Our Training</span>
                     </div>
                   </div>
                 </div>
 
-                <div className="grid grid-cols-2 gap-4 mt-5">
+                <div className="grid grid-cols-2 gap-5 mt-8">
                   {[
                     { icon: ShieldCheck, label: "Accredited Center" },
                     { icon: TrendingUp, label: "15+ Years Experience" },
                   ].map(({ icon: Icon, label }) => (
                     <div
                       key={label}
-                      className="flex items-center gap-3 bg-slate-50 rounded-xl px-4 py-3 border border-slate-100"
+                      className="flex items-center gap-4 bg-gradient-to-br from-slate-50 to-slate-100 rounded-2xl px-5 py-4 border border-slate-200"
                     >
-                      <Icon size={18} className="text-blue-600 shrink-0" />
+                      <div className="w-10 h-10 rounded-xl bg-blue-100 flex items-center justify-center shrink-0">
+                        <Icon size={20} className="text-blue-600" />
+                      </div>
                       <span className="text-sm font-semibold text-slate-700">
                         {label}
                       </span>
@@ -363,103 +363,103 @@ export default function Home() {
         <section
           id="courses"
           aria-labelledby="courses-heading"
-          className="py-20 lg:py-28 bg-gradient-to-b from-slate-50 to-white"
+          className="py-20 lg:py-28 bg-gradient-to-b from-slate-50 via-white to-slate-50"
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-14 animate-on-scroll">
-              <span className="inline-block text-xs font-bold tracking-widest text-blue-600 uppercase mb-3">
+            <div className="text-center mb-16 animate-on-scroll">
+              <span className="inline-block text-xs font-bold tracking-widest text-blue-600 uppercase mb-4">
                 Our Programs
               </span>
               <h2
                 id="courses-heading"
-                className="font-heading text-3xl sm:text-4xl font-bold text-slate-900 mb-4"
+                className="font-heading text-4xl sm:text-5xl font-bold text-slate-900 mb-6"
               >
                 Courses &amp; Programmes
               </h2>
-              <p className="text-slate-500 max-w-xl mx-auto">
+              <p className="text-slate-600 max-w-2xl mx-auto text-lg">
                 Selected programmes — beginner to advanced. Full detailed
                 syllabus available in the PDF.
               </p>
             </div>
 
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
               {courses.map((course, i) => {
                 const Icon = course.icon;
                 return (
                   <article
                     key={course.title}
-                    className={`animate-on-scroll relative rounded-2xl p-7 border transition-all hover:shadow-xl hover:-translate-y-1 ${
+                    className={`animate-on-scroll relative rounded-3xl p-8 border transition-all duration-500 hover:-translate-y-2 group ${
                       course.featured
-                        ? "bg-gradient-to-br from-blue-600 to-blue-700 text-white border-blue-500 shadow-lg shadow-blue-500/20"
-                        : "bg-white text-slate-900 border-slate-200 shadow-sm"
+                        ? "bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800 text-white border-blue-500 shadow-xl shadow-blue-500/30"
+                        : "bg-white text-slate-900 border-slate-200 shadow-lg hover:border-blue-300"
                     }`}
-                    style={{ transitionDelay: `${i * 0.07}s` }}
+                    style={{ transitionDelay: `${i * 0.1}s` }}
                   >
                     {course.featured && (
-                      <div className="absolute top-4 right-4 flex items-center gap-1 bg-orange-400 text-white text-xs font-bold px-2.5 py-1 rounded-full">
-                        <Star size={10} fill="white" /> Most Popular
+                      <div className="absolute top-4 right-4 flex items-center gap-1.5 bg-gradient-to-r from-orange-400 to-orange-500 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg">
+                        <Star size={12} fill="white" /> Most Popular
                       </div>
                     )}
                     <div
-                      className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 ${
-                        course.featured ? "bg-white/20" : "bg-blue-50"
+                      className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-6 transition-transform group-hover:scale-110 ${
+                        course.featured ? "bg-white/20 backdrop-blur-sm" : "bg-gradient-to-br from-blue-50 to-blue-100"
                       }`}
                     >
                       <Icon
-                        size={22}
+                        size={24}
                         className={
                           course.featured ? "text-white" : "text-blue-600"
                         }
-                      />
+                    />
                     </div>
                     <h3
-                      className={`font-heading font-bold text-lg mb-2 ${course.featured ? "text-white" : "text-slate-900"}`}
+                      className={`font-heading font-bold text-xl mb-3 ${course.featured ? "text-white" : "text-slate-900"}`}
                     >
                       {course.title}
                     </h3>
                     <p
-                      className={`text-sm leading-relaxed mb-5 ${course.featured ? "text-blue-100" : "text-slate-500"}`}
+                      className={`text-base leading-relaxed mb-6 ${course.featured ? "text-blue-100" : "text-slate-600"}`}
                     >
                       {course.description}
                     </p>
 
                     <div
-                      className={`flex flex-wrap gap-3 mb-5 text-xs font-medium ${course.featured ? "text-blue-100" : "text-slate-500"}`}
+                      className={`flex flex-wrap gap-3 mb-6 text-sm font-medium ${course.featured ? "text-blue-100" : "text-slate-500"}`}
                     >
                       {course.duration && (
                         <span
-                          className={`flex items-center gap-1 ${course.featured ? "bg-white/15" : "bg-slate-100"} rounded-full px-3 py-1`}
+                          className={`flex items-center gap-2 ${course.featured ? "bg-white/15 backdrop-blur-sm" : "bg-slate-100"} rounded-full px-4 py-2`}
                         >
-                          <CalendarDays size={11} /> {course.duration}
+                          <CalendarDays size={14} /> {course.duration}
                         </span>
                       )}
                       {course.price && (
                         <span
-                          className={`flex items-center gap-1 ${course.featured ? "bg-white/15" : "bg-slate-100"} rounded-full px-3 py-1`}
+                          className={`flex items-center gap-2 ${course.featured ? "bg-white/15 backdrop-blur-sm" : "bg-slate-100"} rounded-full px-4 py-2`}
                         >
                           {course.price.startsWith("₦") ? (
-                            <Wallet size={11} />
+                            <Wallet size={14} />
                           ) : (
-                            <Info size={11} />
+                            <Info size={14} />
                           )}{" "}
                           {course.price}
                         </span>
                       )}
                       {!course.price && (
                         <span
-                          className={`flex items-center gap-1 ${course.featured ? "bg-white/15" : "bg-slate-100"} rounded-full px-3 py-1`}
+                          className={`flex items-center gap-2 ${course.featured ? "bg-white/15 backdrop-blur-sm" : "bg-slate-100"} rounded-full px-4 py-2`}
                         >
-                          <ShoppingCart size={11} /> Products available
+                          <ShoppingCart size={14} /> Products available
                         </span>
                       )}
                     </div>
 
                     <Link
                       href="#contact"
-                      className={`arrow-link flex items-center gap-1 text-sm font-semibold transition-colors ${
+                      className={`arrow-link flex items-center gap-2 text-sm font-semibold transition-all duration-300 ${
                         course.featured
-                          ? "text-white hover:text-blue-100"
-                          : "text-blue-600 hover:text-blue-700"
+                          ? "text-white hover:text-blue-100 group-hover:translate-x-1"
+                          : "text-blue-600 hover:text-blue-700 group-hover:translate-x-1"
                       }`}
                     >
                       {course.price === "Contact us"
@@ -468,7 +468,7 @@ export default function Home() {
                           ? "Enroll now"
                           : "Get quote"}
                       <span className="arrow-icon">
-                        <ArrowRight size={14} />
+                        <ArrowRight size={16} />
                       </span>
                     </Link>
                   </article>
@@ -476,20 +476,22 @@ export default function Home() {
               })}
             </div>
 
-            <div className="flex flex-wrap items-center justify-center gap-4 mt-12 animate-on-scroll">
+            <div className="flex flex-wrap items-center justify-center gap-4 mt-16 animate-on-scroll">
               <Link
                 href="#contact"
-                className="inline-flex items-center gap-2 px-8 py-3.5 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl shadow-sm hover:shadow-md transition-all"
+                className="group inline-flex items-center gap-3 px-10 py-4 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 text-white font-semibold rounded-2xl shadow-xl shadow-blue-500/30 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/40"
               >
-                <Send size={16} /> Register Now
+                <Send size={18} />
+                <span>Register Now</span>
+                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
               </Link>
               <a
                 href="/docs/Course Outline.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-sm font-semibold text-slate-600 hover:text-blue-600 transition-colors"
+                className="inline-flex items-center gap-2 text-base font-semibold text-slate-600 hover:text-blue-600 transition-colors"
               >
-                <ExternalLink size={15} /> View full syllabus
+                <ExternalLink size={18} /> View full syllabus
               </a>
             </div>
           </div>
@@ -499,38 +501,38 @@ export default function Home() {
         <section
           id="services"
           aria-labelledby="services-heading"
-          className="py-20 lg:py-28 bg-slate-50"
+          className="py-20 lg:py-28 bg-gradient-to-b from-white to-slate-50"
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-14 animate-on-scroll">
-              <span className="inline-block text-xs font-bold tracking-widest text-blue-600 uppercase mb-3">
+            <div className="text-center mb-16 animate-on-scroll">
+              <span className="inline-block text-xs font-bold tracking-widest text-blue-600 uppercase mb-4">
                 Additional Services
               </span>
               <h2
                 id="services-heading"
-                className="font-heading text-3xl sm:text-4xl font-bold text-slate-900 mb-4"
+                className="font-heading text-4xl sm:text-5xl font-bold text-slate-900 mb-6"
               >
                 Beyond Training
               </h2>
-              <p className="text-slate-500 max-w-md mx-auto">
+              <p className="text-slate-600 max-w-2xl mx-auto text-lg">
                 Comprehensive IT solutions for businesses and individuals
               </p>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-6">
+            <div className="grid md:grid-cols-3 gap-8">
               {/* Maintenance */}
-              <div className="animate-on-scroll bg-white rounded-2xl p-7 border border-slate-200 shadow-sm hover:shadow-lg transition-all">
-                <div className="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center mb-5">
-                  <Settings size={22} className="text-blue-600" />
+              <div className="animate-on-scroll bg-white rounded-3xl p-8 border border-slate-200 shadow-lg transition-all duration-500 hover:-translate-y-2 group">
+                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                  <Settings size={28} className="text-blue-600" />
                 </div>
-                <h3 className="font-heading font-bold text-lg text-slate-900 mb-2">
+                <h3 className="font-heading font-bold text-xl text-slate-900 mb-3">
                   Computer Maintenance &amp; Repair
                 </h3>
-                <p className="text-slate-500 text-sm mb-5">
+                <p className="text-slate-600 text-base mb-6">
                   On-site and in-lab servicing for corporate clients and
                   individuals.
                 </p>
-                <ul className="space-y-2">
+                <ul className="space-y-3">
                   {[
                     "Hardware diagnostics",
                     "Software troubleshooting",
@@ -539,9 +541,11 @@ export default function Home() {
                   ].map((f) => (
                     <li
                       key={f}
-                      className="flex items-center gap-2 text-sm text-slate-600"
+                      className="flex items-center gap-3 text-sm text-slate-600"
                     >
-                      <Check size={14} className="text-green-500 shrink-0" />{" "}
+                      <div className="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center shrink-0">
+                        <Check size={12} className="text-green-600" />
+                      </div>
                       {f}
                     </li>
                   ))}
@@ -550,23 +554,23 @@ export default function Home() {
 
               {/* Accessories — featured */}
               <div
-                className="animate-on-scroll relative bg-gradient-to-br from-blue-600 to-blue-700 rounded-2xl p-7 text-white shadow-xl shadow-blue-500/20 hover:shadow-2xl hover:-translate-y-1 transition-all"
+                className="animate-on-scroll relative bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800 rounded-3xl p-8 text-white shadow-2xl shadow-blue-500/30 hover:-translate-y-2 transition-all duration-500 group"
                 style={{ transitionDelay: "0.1s" }}
               >
-                <span className="absolute top-4 right-4 text-xs font-bold bg-orange-400 text-white px-2.5 py-1 rounded-full">
-                  New
-                </span>
-                <div className="w-12 h-12 rounded-xl bg-white/20 flex items-center justify-center mb-5">
-                  <ShoppingBag size={22} className="text-white" />
+                <div className="absolute top-5 right-5 flex items-center gap-2 bg-gradient-to-r from-orange-400 to-orange-500 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg">
+                  <Star size={12} fill="white" /> New
                 </div>
-                <h3 className="font-heading font-bold text-lg mb-2">
+                <div className="w-16 h-16 rounded-2xl bg-white/20 backdrop-blur-sm flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                  <ShoppingBag size={28} className="text-white" />
+                </div>
+                <h3 className="font-heading font-bold text-xl mb-3">
                   Laptops &amp; Computer Accessories
                 </h3>
-                <p className="text-blue-100 text-sm mb-5">
+                <p className="text-blue-100 text-base mb-6">
                   Browse our extensive collection of 100+ quality products
                   available for purchase.
                 </p>
-                <ul className="space-y-2 mb-6">
+                <ul className="space-y-3 mb-8">
                   {[
                     "Laptops & Printers",
                     "Keyboards & Mice",
@@ -575,39 +579,42 @@ export default function Home() {
                   ].map((f) => (
                     <li
                       key={f}
-                      className="flex items-center gap-2 text-sm text-blue-100"
+                      className="flex items-center gap-3 text-sm text-blue-100"
                     >
-                      <Check size={14} className="text-blue-200 shrink-0" /> {f}
+                      <div className="w-6 h-6 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center shrink-0">
+                        <Check size={12} className="text-white" />
+                      </div>
+                      {f}
                     </li>
                   ))}
                 </ul>
                 <Link
                   href="/accessories"
-                  className="arrow-link inline-flex items-center gap-2 text-sm font-semibold text-white hover:text-blue-100 transition-colors"
+                  className="arrow-link inline-flex items-center gap-2 text-sm font-semibold text-white hover:text-blue-100 transition-all group-hover:translate-x-1"
                 >
                   View Full Gallery{" "}
                   <span className="arrow-icon">
-                    <ArrowRight size={14} />
+                    <ArrowRight size={16} />
                   </span>
                 </Link>
               </div>
 
               {/* Procurement */}
               <div
-                className="animate-on-scroll bg-white rounded-2xl p-7 border border-slate-200 shadow-sm hover:shadow-lg transition-all"
+                className="animate-on-scroll bg-white rounded-3xl p-8 border border-slate-200 shadow-lg transition-all duration-500 hover:-translate-y-2 group"
                 style={{ transitionDelay: "0.2s" }}
               >
-                <div className="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center mb-5">
-                  <Package size={22} className="text-blue-600" />
+                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                  <Package size={28} className="text-blue-600" />
                 </div>
-                <h3 className="font-heading font-bold text-lg text-slate-900 mb-2">
+                <h3 className="font-heading font-bold text-xl text-slate-900 mb-3">
                   Procurement of Office Equipment
                 </h3>
-                <p className="text-slate-500 text-sm mb-5">
+                <p className="text-slate-600 text-base mb-6">
                   Office setup and procurement tailored to business budgets and
                   compliance.
                 </p>
-                <ul className="space-y-2">
+                <ul className="space-y-3">
                   {[
                     "Bulk ordering",
                     "Budget planning",
@@ -615,9 +622,11 @@ export default function Home() {
                   ].map((f) => (
                     <li
                       key={f}
-                      className="flex items-center gap-2 text-sm text-slate-600"
+                      className="flex items-center gap-3 text-sm text-slate-600"
                     >
-                      <Check size={14} className="text-green-500 shrink-0" />{" "}
+                      <div className="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center shrink-0">
+                        <Check size={12} className="text-green-600" />
+                      </div>
                       {f}
                     </li>
                   ))}
@@ -630,42 +639,51 @@ export default function Home() {
         {/* ── TESTIMONIALS ── */}
         <section
           aria-labelledby="testimonials-heading"
-          className="py-20 lg:py-28 bg-white"
+          className="py-20 lg:py-28 bg-gradient-to-b from-slate-50 to-white"
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-14 animate-on-scroll">
-              <span className="inline-block text-xs font-bold tracking-widest text-blue-600 uppercase mb-3">
+            <div className="text-center mb-16 animate-on-scroll">
+              <span className="inline-block text-xs font-bold tracking-widest text-blue-600 uppercase mb-4">
                 Success Stories
               </span>
               <h2
                 id="testimonials-heading"
-                className="font-heading text-3xl sm:text-4xl font-bold text-slate-900"
+                className="font-heading text-4xl sm:text-5xl font-bold text-slate-900 mb-6"
               >
                 What Our Students Say
               </h2>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-6">
+            <div className="grid md:grid-cols-3 gap-8">
               {testimonials.map((t, i) => (
                 <div
                   key={t.name}
-                  className="animate-on-scroll bg-slate-50 rounded-2xl p-7 border border-slate-100 hover:shadow-lg transition-all"
-                  style={{ transitionDelay: `${i * 0.1}s` }}
+                  className="animate-on-scroll bg-white rounded-3xl p-8 border border-slate-200 shadow-lg transition-all duration-500 hover:-translate-y-2 group"
+                  style={{ transitionDelay: `${i * 0.15}s` }}
                 >
-                  <Quote size={28} className="text-blue-200 mb-4" />
-                  <p className="text-slate-700 leading-relaxed mb-6 italic text-sm">
-                    &ldquo;{t.quote}&rdquo;
-                  </p>
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center">
-                      <User size={18} className="text-blue-600" />
+                  <div className="flex items-start gap-4 mb-6">
+                    <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                      <User size={24} className="text-blue-600" />
                     </div>
-                    <div>
-                      <div className="font-semibold text-slate-900 text-sm">
+                    <div className="flex-1">
+                      <div className="font-semibold text-slate-900 text-base mb-1">
                         {t.name}
                       </div>
-                      <div className="text-xs text-slate-500">{t.role}</div>
+                      <div className="text-sm text-slate-500">{t.role}</div>
                     </div>
+                    <Quote size={32} className="text-blue-200 shrink-0" />
+                  </div>
+                  <p className="text-slate-700 leading-relaxed italic text-base">
+                    &ldquo;{t.quote}&rdquo;
+                  </p>
+                  <div className="flex gap-1 mt-6">
+                    {[...Array(5)].map((_, i) => (
+                      <Star
+                        key={i}
+                        size={16}
+                        className="text-yellow-400 fill-yellow-400"
+                      />
+                    ))}
                   </div>
                 </div>
               ))}
@@ -677,31 +695,31 @@ export default function Home() {
         <section
           id="contact"
           aria-labelledby="contact-heading"
-          className="py-20 lg:py-28 bg-slate-50"
+          className="py-20 lg:py-28 bg-gradient-to-b from-slate-50 to-white"
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
+            <div className="grid lg:grid-cols-2 gap-16 lg:gap-20">
               {/* Info */}
               <div className="animate-on-scroll">
-                <span className="inline-block text-xs font-bold tracking-widest text-blue-600 uppercase mb-3">
+                <span className="inline-block text-xs font-bold tracking-widest text-blue-600 uppercase mb-4">
                   Get In Touch
                 </span>
                 <h2
                   id="contact-heading"
-                  className="font-heading text-3xl sm:text-4xl font-bold text-slate-900 mb-4"
+                  className="font-heading text-4xl sm:text-5xl font-bold text-slate-900 mb-6"
                 >
                   Contact &amp; Visit
                 </h2>
-                <p className="text-slate-500 mb-8">
-                  <strong className="text-slate-700">
-                    Modem Computer Technology
+                <p className="text-slate-600 text-lg mb-10">
+                  <strong className="text-slate-900">
+                    Hero Link Systems Limited
                   </strong>
                   <br />
                   Elemoro Shopping Complex, Bogije Bus-stop, Ibeju-Lekki, Lagos
                   State, Nigeria.
                 </p>
 
-                <div className="space-y-4 mb-8">
+                <div className="space-y-6 mb-10">
                   {[
                     {
                       icon: Phone,
@@ -709,7 +727,7 @@ export default function Home() {
                       content: (
                         <a
                           href="tel:+2348032310325"
-                          className="text-blue-600 hover:underline font-medium"
+                          className="text-blue-600 hover:text-blue-700 font-semibold text-lg"
                         >
                           +234 803 231 0325
                         </a>
@@ -720,7 +738,7 @@ export default function Home() {
                       content: (
                         <a
                           href="mailto:modemcomputers247@gmail.com"
-                          className="text-blue-600 hover:underline font-medium"
+                          className="text-blue-600 hover:text-blue-700 font-semibold text-lg"
                         >
                           modemcomputers247@gmail.com
                         </a>
@@ -731,29 +749,29 @@ export default function Home() {
                       icon: Clock,
                       label: "Hours",
                       content: (
-                        <span className="font-medium text-slate-700">
+                        <span className="font-semibold text-slate-700 text-lg">
                           Mon–Sat: 9AM – 5PM
                         </span>
                       ),
                     },
                   ].map(({ icon: Icon, label, content }) => (
                     <div key={label} className="flex items-start gap-4">
-                      <div className="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center shrink-0">
-                        <Icon size={17} className="text-blue-600" />
+                      <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center shrink-0">
+                        <Icon size={24} className="text-blue-600" />
                       </div>
                       <div>
-                        <div className="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-0.5">
+                        <div className="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-1">
                           {label}
                         </div>
-                        <div className="text-sm">{content}</div>
+                        <div className="text-base">{content}</div>
                       </div>
                     </div>
                   ))}
                 </div>
 
-                <div className="rounded-2xl overflow-hidden shadow-md border border-slate-200 h-64">
+                <div className="rounded-3xl overflow-hidden shadow-xl border border-slate-200 h-80">
                   <iframe
-                    title="Modem Computer Technology location on Google Maps"
+                    title="Hero Link Systems Limited location on Google Maps"
                     src="https://www.google.com/maps?q=Elemoro+Shopping+Complex,+Bogije+Bus+stop+Ibeju-Lekki,+Lagos&output=embed"
                     className="w-full h-full"
                     loading="lazy"

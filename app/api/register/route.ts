@@ -98,7 +98,7 @@ export async function POST(req: NextRequest) {
   });
 
   const mailOptions = {
-    from: `"Modem Computer Technology Website" <${emailUser}>`,
+    from: `"Hero Link Systems Limited Website" <${emailUser}>`,
     to: emailTo,
     replyTo: email || undefined,
     subject: `New Enquiry from ${name}`,
@@ -113,7 +113,7 @@ export async function POST(req: NextRequest) {
     ].join("\n"),
     html: `
       <div style="font-family:sans-serif;max-width:560px;margin:0 auto;padding:24px;border:1px solid #e2e8f0;border-radius:12px">
-        <h2 style="color:#1e40af;margin:0 0 20px">New Enquiry — Modem Computer Technology</h2>
+        <h2 style="color:#1e40af;margin:0 0 20px">New Enquiry — Hero Link Systems Limited</h2>
         <table style="width:100%;border-collapse:collapse;font-size:14px">
           ${[
             ["Name", name],
@@ -128,7 +128,7 @@ export async function POST(req: NextRequest) {
             </tr>
           `).join("")}
         </table>
-        <p style="margin:20px 0 0;font-size:12px;color:#94a3b8">Sent from modemcomputertechnology.com</p>
+        <p style="margin:20px 0 0;font-size:12px;color:#94a3b8">Sent from herolinksystems.com</p>
       </div>`,
   };
 

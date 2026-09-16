@@ -1,6 +1,6 @@
-# Modem Computer Technology — Next.js Website
+# Hero Link Systems Limited — Next.js Website
 
-A full-featured Next.js 14 website for Modem Computer Technology, converted from a vanilla HTML/CSS/JS project with improved design, SEO, and security.
+A full-featured Next.js 14 website for Hero Link Systems Limited, converted from a vanilla HTML/CSS/JS project with improved design, SEO, and security.
 
 ## Tech Stack
 
@@ -27,7 +27,7 @@ Then edit `.env.local` with your real values:
 EMAIL_USER=modemcomputers247@gmail.com
 EMAIL_PASS=your_gmail_app_password   # NOT your regular password
 EMAIL_TO=modemcomputers247@gmail.com
-NEXT_PUBLIC_SITE_URL=https://www.modemcomputertechnology.com
+NEXT_PUBLIC_SITE_URL=https://www.herolinksystems.com
 ```
 
 > ⚠️ **Important:** Generate a Gmail App Password at https://myaccount.google.com/apppasswords.  
