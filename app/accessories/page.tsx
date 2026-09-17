@@ -48,7 +48,7 @@ export default function AccessoriesPage() {
   return (
     <>
       <Header />
-      <main id="main" className="pt-6">
+      <main id="main" className="pt-14 lg:pt-6">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -57,24 +57,24 @@ export default function AccessoriesPage() {
         {/* Page hero */}
         <section
           aria-labelledby="page-heading"
-          className="bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 text-white py-14"
+          className="bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 text-white py-10 sm:py-14"
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <Link
               href="/"
-              className="inline-flex items-center gap-1.5 text-blue-300 hover:text-white text-sm mb-6 transition-colors"
+              className="inline-flex items-center gap-1.5 text-blue-300 hover:text-white text-xs sm:text-sm mb-4 sm:mb-6 transition-colors"
             >
-              <ArrowLeft size={15} /> Back to Home
+              <ArrowLeft size={14} sm:size={15} /> Back to Home
             </Link>
-            <div className="flex items-start gap-5">
-              <div className="w-14 h-14 rounded-2xl bg-blue-500/20 border border-blue-400/30 flex items-center justify-center shrink-0">
-                <ShoppingBag size={26} className="text-blue-300" />
+            <div className="flex items-start gap-3 sm:gap-5">
+              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-blue-500/20 border border-blue-400/30 flex items-center justify-center shrink-0">
+                <ShoppingBag size={22} sm:size={26} className="text-blue-300" />
               </div>
               <div>
-                <h1 id="page-heading" className="font-heading text-3xl sm:text-4xl font-bold mb-2">
+                <h1 id="page-heading" className="font-heading text-2xl sm:text-3xl lg:text-4xl font-bold mb-2">
                   Laptops &amp; Computer Accessories Gallery
                 </h1>
-                <p className="text-blue-200 max-w-xl">
+                <p className="text-blue-200 max-w-xl text-sm sm:text-base">
                   Explore our extensive collection of {accessories.length}+ quality products. Click any item to enquire via call or WhatsApp.
                 </p>
               </div>

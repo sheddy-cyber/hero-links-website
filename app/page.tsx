@@ -144,7 +144,7 @@ export default function Home() {
     <>
       <Header />
       <ScrollAnimator />
-      <main id="main" className="pt-6">
+      <main id="main" className="pt-14 lg:pt-6">
         {/* ── HERO ── */}
         <section
           id="home"
@@ -165,37 +165,37 @@ export default function Home() {
           <div className="absolute bottom-0 left-0 w-[600px] h-[600px] rounded-full bg-orange-500/15 blur-3xl translate-y-1/2 -translate-x-1/4 animate-pulse" style={{ animationDelay: "1s" }} />
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] rounded-full bg-purple-500/10 blur-3xl animate-pulse" style={{ animationDelay: "2s" }} />
 
-          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 lg:pt-24 pb-20 lg:pb-32">
-            <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 lg:pt-24 pb-16 lg:pb-32">
+            <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
               {/* Left */}
-              <div className="space-y-8">
-                <div className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-500/20 to-orange-500/20 border border-blue-400/30 rounded-full px-5 py-2 text-sm font-medium text-blue-200 backdrop-blur-sm">
-                  <Award size={16} className="text-orange-400" />
+              <div className="space-y-6 lg:space-y-8">
+                <div className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-500/20 to-orange-500/20 border border-blue-400/30 rounded-full px-4 py-2 text-xs sm:text-sm font-medium text-blue-200 backdrop-blur-sm">
+                  <Award size={14} sm:size={16} className="text-orange-400" />
                   <span>Certified Training Center</span>
                 </div>
                 <h1
                   id="hero-heading"
-                  className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight"
+                  className="font-heading text-3xl sm:text-4xl lg:text-6xl font-bold leading-tight"
                 >
                   Build Real Skills.{" "}
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-orange-400">
                     Get Hired.
                   </span>
                 </h1>
-                <p className="text-lg lg:text-xl text-blue-100/90 leading-relaxed max-w-xl">
+                <p className="text-base sm:text-lg lg:text-xl text-blue-100/90 leading-relaxed max-w-xl">
                   Hands-on courses in desktop publishing, graphic design, web
                   design, computer maintenance, and procurement of office
                   equipment — delivered in Ibeju-Lekki, Lagos.
                 </p>
 
-                <div className="flex flex-wrap gap-4">
+                <div className="flex flex-wrap gap-3 sm:gap-4">
                   <Link
                     href="#courses"
-                    className="group inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 text-white font-semibold rounded-2xl shadow-xl shadow-blue-500/30 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/40"
+                    className="group inline-flex items-center gap-2 px-6 py-3 sm:px-8 sm:py-4 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 text-white font-semibold rounded-2xl shadow-xl shadow-blue-500/30 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/40"
                   >
-                    <GraduationCap size={20} />
-                    <span>Explore Courses</span>
-                    <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                    <GraduationCap size={18} sm:size={20} />
+                    <span className="text-sm sm:text-base">Explore Courses</span>
+                    <ArrowRight size={16} sm:size={18} className="group-hover:translate-x-1 transition-transform" />
                   </Link>
                   <Link
                     href="#contact"
@@ -382,7 +382,7 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
               {courses.map((course, i) => {
                 const Icon = course.icon;
                 return (
@@ -519,16 +519,16 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
               {/* Maintenance */}
-              <div className="animate-on-scroll bg-white rounded-3xl p-8 border border-slate-200 shadow-lg transition-all duration-500 hover:-translate-y-2 group">
-                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                  <Settings size={28} className="text-blue-600" />
+              <div className="animate-on-scroll bg-white rounded-3xl p-6 md:p-8 border border-slate-200 shadow-lg transition-all duration-500 hover:-translate-y-2 group">
+                <div className="w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center mb-4 md:mb-6 group-hover:scale-110 transition-transform">
+                  <Settings size={24} md:size={28} className="text-blue-600" />
                 </div>
-                <h3 className="font-heading font-bold text-xl text-slate-900 mb-3">
+                <h3 className="font-heading font-bold text-lg md:text-xl text-slate-900 mb-3">
                   Computer Maintenance &amp; Repair
                 </h3>
-                <p className="text-slate-600 text-base mb-6">
+                <p className="text-slate-600 text-sm md:text-base mb-4 md:mb-6">
                   On-site and in-lab servicing for corporate clients and
                   individuals.
                 </p>
@@ -554,19 +554,19 @@ export default function Home() {
 
               {/* Accessories — featured */}
               <div
-                className="animate-on-scroll relative bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800 rounded-3xl p-8 text-white shadow-2xl shadow-blue-500/30 hover:-translate-y-2 transition-all duration-500 group"
+                className="animate-on-scroll relative bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800 rounded-3xl p-6 md:p-8 text-white shadow-2xl shadow-blue-500/30 hover:-translate-y-2 transition-all duration-500 group"
                 style={{ transitionDelay: "0.1s" }}
               >
-                <div className="absolute top-5 right-5 flex items-center gap-2 bg-gradient-to-r from-orange-400 to-orange-500 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg">
+                <div className="absolute top-4 right-4 flex items-center gap-2 bg-gradient-to-r from-orange-400 to-orange-500 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg">
                   <Star size={12} fill="white" /> New
                 </div>
-                <div className="w-16 h-16 rounded-2xl bg-white/20 backdrop-blur-sm flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                  <ShoppingBag size={28} className="text-white" />
+                <div className="w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-white/20 backdrop-blur-sm flex items-center justify-center mb-4 md:mb-6 group-hover:scale-110 transition-transform">
+                  <ShoppingBag size={24} md:size={28} className="text-white" />
                 </div>
-                <h3 className="font-heading font-bold text-xl mb-3">
+                <h3 className="font-heading font-bold text-lg md:text-xl mb-3">
                   Laptops &amp; Computer Accessories
                 </h3>
-                <p className="text-blue-100 text-base mb-6">
+                <p className="text-blue-100 text-sm md:text-base mb-4 md:mb-6">
                   Browse our extensive collection of 100+ quality products
                   available for purchase.
                 </p>
@@ -601,16 +601,16 @@ export default function Home() {
 
               {/* Procurement */}
               <div
-                className="animate-on-scroll bg-white rounded-3xl p-8 border border-slate-200 shadow-lg transition-all duration-500 hover:-translate-y-2 group"
+                className="animate-on-scroll bg-white rounded-3xl p-6 md:p-8 border border-slate-200 shadow-lg transition-all duration-500 hover:-translate-y-2 group"
                 style={{ transitionDelay: "0.2s" }}
               >
-                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                  <Package size={28} className="text-blue-600" />
+                <div className="w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center mb-4 md:mb-6 group-hover:scale-110 transition-transform">
+                  <Package size={24} md:size={28} className="text-blue-600" />
                 </div>
-                <h3 className="font-heading font-bold text-xl text-slate-900 mb-3">
+                <h3 className="font-heading font-bold text-lg md:text-xl text-slate-900 mb-3">
                   Procurement of Office Equipment
                 </h3>
-                <p className="text-slate-600 text-base mb-6">
+                <p className="text-slate-600 text-sm md:text-base mb-4 md:mb-6">
                   Office setup and procurement tailored to business budgets and
                   compliance.
                 </p>
@@ -654,26 +654,26 @@ export default function Home() {
               </h2>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
               {testimonials.map((t, i) => (
                 <div
                   key={t.name}
-                  className="animate-on-scroll bg-white rounded-3xl p-8 border border-slate-200 shadow-lg transition-all duration-500 hover:-translate-y-2 group"
+                  className="animate-on-scroll bg-white rounded-3xl p-6 md:p-8 border border-slate-200 shadow-lg transition-all duration-500 hover:-translate-y-2 group"
                   style={{ transitionDelay: `${i * 0.15}s` }}
                 >
-                  <div className="flex items-start gap-4 mb-6">
-                    <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
-                      <User size={24} className="text-blue-600" />
+                  <div className="flex items-start gap-3 md:gap-4 mb-4 md:mb-6">
+                    <div className="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                      <User size={20} md:size={24} className="text-blue-600" />
                     </div>
                     <div className="flex-1">
-                      <div className="font-semibold text-slate-900 text-base mb-1">
+                      <div className="font-semibold text-slate-900 text-sm md:text-base mb-1">
                         {t.name}
                       </div>
-                      <div className="text-sm text-slate-500">{t.role}</div>
+                      <div className="text-xs md:text-sm text-slate-500">{t.role}</div>
                     </div>
-                    <Quote size={32} className="text-blue-200 shrink-0" />
+                    <Quote size={24} md:size={32} className="text-blue-200 shrink-0" />
                   </div>
-                  <p className="text-slate-700 leading-relaxed italic text-base">
+                  <p className="text-slate-700 leading-relaxed italic text-sm md:text-base">
                     &ldquo;{t.quote}&rdquo;
                   </p>
                   <div className="flex gap-1 mt-6">

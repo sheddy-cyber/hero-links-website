@@ -111,15 +111,15 @@ export default function AccessoriesGallery() {
         }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="filter-scroll-row flex items-center gap-2 py-3 overflow-x-auto">
+          <div className="filter-scroll-row flex items-center gap-1.5 sm:gap-2 py-2 sm:py-3 overflow-x-auto">
             {CATEGORY_KEYS.map((cat) => (
               <button
                 key={cat}
                 type="button"
                 onClick={() => handleFilter(cat)}
                 className={[
-                  "inline-flex items-center gap-1.5 px-4 py-2 rounded-full",
-                  "text-sm font-medium whitespace-nowrap shrink-0 border-0",
+                  "inline-flex items-center gap-1 sm:gap-1.5 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full",
+                  "text-xs sm:text-sm font-medium whitespace-nowrap shrink-0 border-0",
                   "transition-colors duration-150 cursor-pointer",
                   filter === cat
                     ? "bg-blue-600 text-white shadow-sm"
@@ -135,8 +135,8 @@ export default function AccessoriesGallery() {
       </div>
 
       {/* ── ITEM COUNT ── */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 pb-2">
-        <p className="text-sm text-slate-500">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-3 sm:pt-4 pb-2">
+        <p className="text-xs sm:text-sm text-slate-500">
           Showing{" "}
           <strong className="text-slate-800">{visible.length}</strong> of{" "}
           <strong className="text-slate-800">{total}</strong> items
@@ -158,7 +158,7 @@ export default function AccessoriesGallery() {
             No items found in this category.
           </p>
         ) : (
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 sm:gap-4">
             {visible.map((item) => (
               <button
                 key={item.id}
@@ -172,15 +172,15 @@ export default function AccessoriesGallery() {
                     alt={item.name}
                     fill
                     sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, (max-width: 1024px) 25vw, 18vw"
-                    className="object-contain p-2 group-hover:scale-105 transition-transform duration-300"
+                    className="object-contain p-1.5 sm:p-2 group-hover:scale-105 transition-transform duration-300"
                     loading="lazy"
                   />
                 </div>
-                <div className="p-3">
-                  <p className="text-xs font-semibold text-slate-800 leading-snug line-clamp-2">
+                <div className="p-2 sm:p-3">
+                  <p className="text-[10px] sm:text-xs font-semibold text-slate-800 leading-snug line-clamp-2">
                     {item.name}
                   </p>
-                  <span className="inline-block mt-1 text-[10px] text-slate-400 capitalize leading-none">
+                  <span className="inline-block mt-1 text-[9px] sm:text-[10px] text-slate-400 capitalize leading-none">
                     {categoryLabels[item.category]}
                   </span>
                 </div>

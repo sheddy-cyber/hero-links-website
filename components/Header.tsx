@@ -119,12 +119,55 @@ export default function Header() {
 
   return (
     <>
-      {/* ── FLOATING ISLAND NAVIGATION ── */}
+      {/* ── MOBILE HEADER WITH HAMBURGER MENU ── */}
+      <header
+        role="banner"
+        className="lg:hidden fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-xl border-b border-slate-200/50"
+      >
+        <div className="flex items-center justify-between px-4 py-3">
+          {/* Brand */}
+          <Link
+            href="/"
+            className="flex items-center gap-2"
+            onClick={close}
+          >
+            <Image
+              src="/images/logo1.png"
+              alt="Hero Link Systems Limited Logo"
+              width={32}
+              height={28}
+              className="rounded-lg"
+              priority
+            />
+            <div>
+              <div className="font-heading font-bold text-[10px] text-slate-900 leading-tight">
+                Hero Link Systems Limited
+              </div>
+              <div className="text-[8px] text-slate-600 font-medium tracking-wide">
+                Power. Connect. Advance.
+              </div>
+            </div>
+          </Link>
+
+          {/* Hamburger button */}
+          <button
+            onClick={toggleMenu}
+            aria-label="Toggle navigation menu"
+            aria-expanded={menuOpen}
+            aria-controls="mobile-nav"
+            className="w-9 h-9 flex items-center justify-center rounded-xl bg-slate-100 text-slate-700 hover:bg-blue-600 hover:text-white transition-all duration-300"
+          >
+            {menuOpen ? <X size={18} /> : <Menu size={18} />}
+          </button>
+        </div>
+      </header>
+
+      {/* ── DESKTOP FLOATING ISLAND NAVIGATION ── */}
       <header
         role="banner"
         style={{ transition: "transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease" }}
         className={[
-          "site-header fixed top-6 left-1/2 -translate-x-1/2 z-50",
+          "site-header fixed top-6 left-1/2 -translate-x-1/2 z-50 hidden lg:block",
           "bg-white/90 backdrop-blur-xl",
           "rounded-2xl shadow-2xl shadow-slate-900/10 border border-white/50",
           hidden ? "-translate-y-full opacity-0" : "translate-y-0 opacity-100",
@@ -240,144 +283,59 @@ export default function Header() {
         }}
       />
 
-      {/* ── DRAWER ── modern floating panel */}
+      {/* ── MOBILE DRAWER ── full screen overlay */}
       <div
         id="mobile-nav"
         role="dialog"
         aria-modal="true"
         aria-label="Navigation menu"
-        className="lg:hidden fixed top-6 right-4 bottom-6 z-50 w-[85vw] max-w-[360px] bg-white/95 backdrop-blur-xl rounded-3xl shadow-2xl shadow-slate-900/20 border border-white/50 flex flex-col"
+        className="lg:hidden fixed inset-0 z-50 bg-white flex flex-col pt-14"
         style={{
-          transform: menuOpen ? "translateX(0)" : "translateX(120%)",
-          transition: "transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
+          transform: menuOpen ? "translateX(0)" : "translateX(100%)",
+          transition: "transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
         }}
       >
-        {/* Drawer header */}
-        <div className="flex items-center justify-between px-5 py-4 border-b border-slate-100/50">
-          <div className="flex items-center gap-2">
-            <Image
-              src="/images/logo1.png"
-              alt="Hero Link Systems Limited Logo"
-              width={32}
-              height={28}
-              className="rounded-lg"
-            />
-            <div>
-              <span className="font-heading font-bold text-[10px] text-slate-900 leading-tight">Hero Link Systems Limited</span>
-              <div className="text-[8px] text-slate-600 font-medium tracking-wide">
-                Power. Connect. Advance.
-              </div>
-            </div>
-          </div>
+        {/* Close button */}
+        <div className="flex justify-end px-4 py-3">
           <button
             onClick={close}
             aria-label="Close menu"
-            className="w-8 h-8 flex items-center justify-center rounded-xl bg-slate-100 text-slate-600 hover:bg-blue-600 hover:text-white transition-all duration-300"
+            className="w-9 h-9 flex items-center justify-center rounded-xl bg-slate-100 text-slate-600 hover:bg-blue-600 hover:text-white transition-all duration-300"
           >
-            <X size={16} />
+            <X size={18} />
           </button>
         </div>
 
-        {/* Nav links */}
-        <nav
-          aria-label="Mobile navigation"
-          className="flex-1 overflow-y-auto px-4 py-5"
-        >
+        {/* Mobile nav links */}
+        <nav aria-label="Mobile navigation" className="flex-1 px-4 py-2">
           <ul className="space-y-2">
-            {navLinks.map(({ href, label, icon: Icon }, i) => {
+            {navLinks.map(({ href, label, icon: Icon }) => {
               const isActive = href === activeLink;
               return (
-                <li
-                  key={href}
-                  className="list-none"
-                  style={{
-                    transitionDelay: menuOpen ? `${i * 50}ms` : "0ms",
-                    transform: menuOpen ? "translateX(0)" : "translateX(20px)",
-                    opacity: menuOpen ? 1 : 0,
-                    transition: "transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease",
-                  }}
-                >
+                <li key={href} className="list-none">
                   <Link
                     href={href}
                     onClick={close}
-                    className={`flex items-center gap-3 px-4 py-3.5 rounded-2xl transition-all duration-300 ${
+                    className={[
+                      "flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200",
                       isActive
-                        ? "bg-gradient-to-r from-blue-50 to-blue-100/50 text-blue-700 shadow-sm"
-                        : "text-slate-700 hover:bg-slate-50 hover:text-blue-600"
-                    }`}
+                        ? "bg-blue-50 text-blue-600"
+                        : "text-slate-700 hover:bg-slate-50",
+                    ].join(" ")}
                   >
-                    <span
-                      className={`w-9 h-9 rounded-xl flex items-center justify-center shrink-0 transition-all duration-300 ${
-                        isActive
-                          ? "bg-blue-500 text-white shadow-md shadow-blue-500/30"
-                          : "bg-slate-100 text-slate-500 group-hover:bg-blue-100 group-hover:text-blue-600"
-                      }`}
-                    >
-                      <Icon size={16} />
-                    </span>
-                    <span className="font-semibold text-sm">{label}</span>
+                    <Icon size={20} />
+                    <span className="font-medium">{label}</span>
                   </Link>
                 </li>
               );
             })}
           </ul>
-
-          {/* Divider */}
-          <div className="my-5 border-t border-slate-100/50" />
-
-          {/* PDF download */}
-          <a
-            href="/docs/Course Outline.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={close}
-            style={{
-              transitionDelay: menuOpen ? `${navLinks.length * 50}ms` : "0ms",
-              transform: menuOpen ? "translateX(0)" : "translateX(20px)",
-              opacity: menuOpen ? 1 : 0,
-              transition: "transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease",
-            }}
-            className="flex items-center gap-3 px-4 py-3.5 rounded-2xl bg-gradient-to-r from-blue-50 to-blue-100/50 hover:from-blue-100 hover:to-blue-200/50 text-blue-700 transition-all duration-300 shadow-sm"
-          >
-            <span className="w-9 h-9 rounded-xl bg-blue-500 flex items-center justify-center shrink-0 shadow-md shadow-blue-500/30">
-              <Download size={16} className="text-white" />
-            </span>
-            <div>
-              <div className="font-semibold text-sm">Course Outline</div>
-              <div className="text-[11px] text-blue-600">Download PDF</div>
-            </div>
-          </a>
         </nav>
 
-        {/* Drawer footer — contact snapshot */}
-        <div
-          className="border-t border-slate-100/50 px-5 py-4 bg-gradient-to-b from-slate-50 to-white space-y-3"
-          style={{
-            transitionDelay: menuOpen
-              ? `${(navLinks.length + 1) * 50}ms`
-              : "0ms",
-            transform: menuOpen ? "translateY(0)" : "translateY(16px)",
-            opacity: menuOpen ? 1 : 0,
-            transition: "transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease",
-          }}
-        >
-          <a
-            href="tel:+2348032310325"
-            className="flex items-center gap-2.5 text-xs text-slate-600 hover:text-blue-600 transition-colors font-medium"
-          >
-            <Phone size={14} className="text-blue-500 shrink-0" />
-            +234 803 231 0325
-          </a>
-          <a
-            href="mailto:modemcomputers247@gmail.com"
-            className="flex items-center gap-2.5 text-xs text-slate-600 hover:text-blue-600 transition-colors break-all font-medium"
-          >
-            <Mail size={14} className="text-blue-500 shrink-0" />
-            modemcomputers247@gmail.com
-          </a>
-          <div className="flex items-start gap-2.5 text-xs text-slate-500">
-            <MapPin size={14} className="text-blue-500 shrink-0 mt-0.5" />
-            Elemoro Shopping Complex, Bogije, Ibeju-Lekki
+        {/* Mobile footer */}
+        <div className="px-4 py-4 border-t border-slate-100">
+          <div className="text-center text-xs text-slate-500">
+            <p>© 2025 Hero Link Systems Limited</p>
           </div>
         </div>
       </div>
