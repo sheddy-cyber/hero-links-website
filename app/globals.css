@@ -30,7 +30,7 @@ html {
 }
 
 body {
-  font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
+  font-family: var(--font-dm-sans), system-ui, -apple-system, sans-serif;
   color: var(--text);
   background: var(--white);
   line-height: 1.6;
