@@ -116,6 +116,7 @@ export default function Header() {
   }, [menuOpen]);
 
   const close = () => setMenuOpen(false);
+  const toggleMenu = () => setMenuOpen((prev) => !prev);
 
   return (
     <>
