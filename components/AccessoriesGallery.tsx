@@ -57,16 +57,26 @@ export default function AccessoriesGallery() {
   const [filterVisible, setFilterVisible] = useState(true);
   const gridRef = useRef<HTMLDivElement>(null);
 
-  // Update filter top position based on screen size
+  // Update filter top position based on screen size and header presence
   useEffect(() => {
     const updateFilterTop = () => {
       const mobileHeader = document.querySelector('header.lg\\:hidden');
+      const desktopHeader = document.querySelector('.site-header');
+
       if (window.innerWidth >= 1024) {
-        setFilterTop(0); // Desktop: stick to top
-      } else if (mobileHeader) {
-        setFilterTop(mobileHeader.offsetHeight); // Mobile: stick below header
+        // Desktop: account for desktop header with top-6
+        if (desktopHeader) {
+          setFilterTop(desktopHeader.offsetHeight + 24); // Header height + top-6 (24px)
+        } else {
+          setFilterTop(0);
+        }
       } else {
-        setFilterTop(56); // Fallback for mobile
+        // Mobile: account for mobile header
+        if (mobileHeader) {
+          setFilterTop(mobileHeader.offsetHeight);
+        } else {
+          setFilterTop(56); // Fallback
+        }
       }
     };
 
@@ -121,8 +131,10 @@ export default function AccessoriesGallery() {
       <div
         className="filter-bar z-[60] bg-white border-b border-slate-100 shadow-sm transition-opacity duration-300"
         style={{
-          position: "sticky",
+          position: "fixed",
           top: filterTop,
+          left: 0,
+          right: 0,
           transition: "top 0.3s ease",
           opacity: filterVisible ? 1 : 0,
           pointerEvents: filterVisible ? "auto" : "none"
