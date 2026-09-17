@@ -55,12 +55,32 @@ export default function AccessoriesGallery() {
   const [selected, setSelected] = useState<AccessoryItem | null>(null);
   const [filterTop, setFilterTop] = useState<number>(0);
   const [filterVisible, setFilterVisible] = useState(true);
+  const [isSticky, setIsSticky] = useState(false);
   const gridRef = useRef<HTMLDivElement>(null);
+  const filterRef = useRef<HTMLDivElement>(null);
 
-  // Simple sticky positioning - stick to top for now
+  // Simulate sticky positioning using fixed position
   useEffect(() => {
-    // Will adjust for headers later once basic sticky works
-    setFilterTop(0);
+    const handleScroll = () => {
+      const filterElement = filterRef.current;
+      if (!filterElement) return;
+
+      const filterRect = filterElement.getBoundingClientRect();
+      const heroSection = document.querySelector('section');
+      const heroRect = heroSection?.getBoundingClientRect();
+
+      // Check if filter bar has reached its sticky position
+      if (filterRect.top <= 0) {
+        setIsSticky(true);
+      } else {
+        setIsSticky(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll(); // Initial check
+
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   // Track when the gallery grid ends to fade out the filter bar
@@ -107,10 +127,13 @@ export default function AccessoriesGallery() {
     <div>
       {/* ── FILTER BAR ── */}
       <div
+        ref={filterRef}
         className="filter-bar z-40 bg-white border-b border-slate-100 shadow-sm transition-opacity duration-300"
         style={{
-          position: "sticky",
-          top: filterTop,
+          position: isSticky ? "fixed" : "relative",
+          top: isSticky ? filterTop : "auto",
+          left: isSticky ? 0 : "auto",
+          right: isSticky ? 0 : "auto",
           transition: "top 0.3s ease",
           opacity: filterVisible ? 1 : 0,
           pointerEvents: filterVisible ? "auto" : "none"
