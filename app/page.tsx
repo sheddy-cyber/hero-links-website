@@ -170,7 +170,7 @@ export default function Home() {
               {/* Left */}
               <div className="space-y-6 lg:space-y-8">
                 <div className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-500/20 to-orange-500/20 border border-blue-400/30 rounded-full px-4 py-2 text-xs sm:text-sm font-medium text-blue-200 backdrop-blur-sm">
-                  <Award size={14} sm:size={16} className="text-orange-400" />
+                  <Award size={14} className="text-orange-400 w-3.5 h-3.5 sm:w-4 sm:h-4" />
                   <span>Certified Training Center</span>
                 </div>
                 <h1
@@ -193,9 +193,9 @@ export default function Home() {
                     href="#courses"
                     className="group inline-flex items-center gap-2 px-6 py-3 sm:px-8 sm:py-4 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 text-white font-semibold rounded-2xl shadow-xl shadow-blue-500/30 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/40"
                   >
-                    <GraduationCap size={18} sm:size={20} />
+                    <GraduationCap size={18} className="w-4.5 h-4.5 sm:w-5 sm:h-5" />
                     <span className="text-sm sm:text-base">Explore Courses</span>
-                    <ArrowRight size={16} sm:size={18} className="group-hover:translate-x-1 transition-transform" />
+                    <ArrowRight size={16} className="w-4 h-4 sm:w-4.5 sm:h-4.5 group-hover:translate-x-1 transition-transform" />
                   </Link>
                   <Link
                     href="#contact"
@@ -523,7 +523,7 @@ export default function Home() {
               {/* Maintenance */}
               <div className="animate-on-scroll bg-white rounded-3xl p-6 md:p-8 border border-slate-200 shadow-lg transition-all duration-500 hover:-translate-y-2 group">
                 <div className="w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center mb-4 md:mb-6 group-hover:scale-110 transition-transform">
-                  <Settings size={24} md:size={28} className="text-blue-600" />
+                  <Settings size={24} className="text-blue-600 w-6 h-6 md:w-7 md:h-7" />
                 </div>
                 <h3 className="font-heading font-bold text-lg md:text-xl text-slate-900 mb-3">
                   Computer Maintenance &amp; Repair
@@ -561,7 +561,7 @@ export default function Home() {
                   <Star size={12} fill="white" /> New
                 </div>
                 <div className="w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-white/20 backdrop-blur-sm flex items-center justify-center mb-4 md:mb-6 group-hover:scale-110 transition-transform">
-                  <ShoppingBag size={24} md:size={28} className="text-white" />
+                  <ShoppingBag size={24} className="text-white w-6 h-6 md:w-7 md:h-7" />
                 </div>
                 <h3 className="font-heading font-bold text-lg md:text-xl mb-3">
                   Laptops &amp; Computer Accessories
@@ -605,7 +605,7 @@ export default function Home() {
                 style={{ transitionDelay: "0.2s" }}
               >
                 <div className="w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center mb-4 md:mb-6 group-hover:scale-110 transition-transform">
-                  <Package size={24} md:size={28} className="text-blue-600" />
+                  <Package size={24} className="text-blue-600 w-6 h-6 md:w-7 md:h-7" />
                 </div>
                 <h3 className="font-heading font-bold text-lg md:text-xl text-slate-900 mb-3">
                   Procurement of Office Equipment
@@ -663,7 +663,7 @@ export default function Home() {
                 >
                   <div className="flex items-start gap-3 md:gap-4 mb-4 md:mb-6">
                     <div className="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
-                      <User size={20} md:size={24} className="text-blue-600" />
+                      <User size={20} className="text-blue-600 w-5 h-5 md:w-6 md:h-6" />
                     </div>
                     <div className="flex-1">
                       <div className="font-semibold text-slate-900 text-sm md:text-base mb-1">
@@ -671,7 +671,7 @@ export default function Home() {
                       </div>
                       <div className="text-xs md:text-sm text-slate-500">{t.role}</div>
                     </div>
-                    <Quote size={24} md:size={32} className="text-blue-200 shrink-0" />
+                    <Quote size={24} className="text-blue-200 shrink-0 w-6 h-6 md:w-8 md:h-8" />
                   </div>
                   <p className="text-slate-700 leading-relaxed italic text-sm md:text-base">
                     &ldquo;{t.quote}&rdquo;

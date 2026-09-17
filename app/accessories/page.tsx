@@ -64,11 +64,11 @@ export default function AccessoriesPage() {
               href="/"
               className="inline-flex items-center gap-1.5 text-blue-300 hover:text-white text-xs sm:text-sm mb-4 sm:mb-6 transition-colors"
             >
-              <ArrowLeft size={14} sm:size={15} /> Back to Home
+              <ArrowLeft size={14} className="w-3.5 h-3.5 sm:w-4 sm:h-4" /> Back to Home
             </Link>
             <div className="flex items-start gap-3 sm:gap-5">
               <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-blue-500/20 border border-blue-400/30 flex items-center justify-center shrink-0">
-                <ShoppingBag size={22} sm:size={26} className="text-blue-300" />
+                <ShoppingBag size={22} className="text-blue-300 w-5.5 h-5.5 sm:w-6.5 sm:h-6.5" />
               </div>
               <div>
                 <h1 id="page-heading" className="font-heading text-2xl sm:text-3xl lg:text-4xl font-bold mb-2">
