@@ -60,10 +60,13 @@ export default function AccessoriesGallery() {
   // Update filter top position based on screen size
   useEffect(() => {
     const updateFilterTop = () => {
+      const mobileHeader = document.querySelector('header.lg\\:hidden');
       if (window.innerWidth >= 1024) {
         setFilterTop(0); // Desktop: stick to top
+      } else if (mobileHeader) {
+        setFilterTop(mobileHeader.offsetHeight); // Mobile: stick below header
       } else {
-        setFilterTop(56); // Mobile: stick below header
+        setFilterTop(56); // Fallback for mobile
       }
     };
 
@@ -116,10 +119,10 @@ export default function AccessoriesGallery() {
     <div>
       {/* ── FILTER BAR ── */}
       <div
-        className="filter-bar z-30 bg-white border-b border-slate-100 shadow-sm transition-opacity duration-300"
-        style={{ 
-          position: "sticky", 
-          top: filterTop, 
+        className="filter-bar z-[60] bg-white border-b border-slate-100 shadow-sm transition-opacity duration-300"
+        style={{
+          position: "sticky",
+          top: filterTop,
           transition: "top 0.3s ease",
           opacity: filterVisible ? 1 : 0,
           pointerEvents: filterVisible ? "auto" : "none"
