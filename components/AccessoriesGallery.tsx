@@ -56,18 +56,22 @@ export default function AccessoriesGallery() {
   const [filterTop, setFilterTop] = useState<number>(0);
   const [filterVisible, setFilterVisible] = useState(true);
   const [isSticky, setIsSticky] = useState(false);
+  const [originalTop, setOriginalTop] = useState<number>(0);
   const gridRef = useRef<HTMLDivElement>(null);
   const filterRef = useRef<HTMLDivElement>(null);
 
   // Simulate sticky positioning using fixed position
   useEffect(() => {
-    const handleScroll = () => {
-      const filterElement = filterRef.current;
-      if (!filterElement) return;
+    const filterElement = filterRef.current;
+    if (!filterElement) return;
 
+    // Store original position relative to viewport
+    const rect = filterElement.getBoundingClientRect();
+    setOriginalTop(rect.top);
+
+    const handleScroll = () => {
+      const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
       const filterRect = filterElement.getBoundingClientRect();
-      const heroSection = document.querySelector('section');
-      const heroRect = heroSection?.getBoundingClientRect();
 
       // Check if filter bar has reached its sticky position
       if (filterRect.top <= 0) {
@@ -134,7 +138,6 @@ export default function AccessoriesGallery() {
           top: isSticky ? filterTop : "auto",
           left: isSticky ? 0 : "auto",
           right: isSticky ? 0 : "auto",
-          transition: "top 0.3s ease",
           opacity: filterVisible ? 1 : 0,
           pointerEvents: filterVisible ? "auto" : "none"
         }}
