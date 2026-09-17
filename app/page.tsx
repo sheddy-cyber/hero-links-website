@@ -153,7 +153,7 @@ export default function Home() {
         >
           {/* Animated background patterns */}
           <div
-            className="absolute inset-0 opacity-10"
+            className="absolute inset-0 opacity-10 overflow-hidden"
             style={{
               backgroundImage:
                 "radial-gradient(circle at 1px 1px, white 1px, transparent 0)",
@@ -161,9 +161,9 @@ export default function Home() {
               animation: "gridMove 20s linear infinite",
             }}
           />
-          <div className="absolute top-0 right-0 w-[800px] h-[800px] rounded-full bg-blue-600/20 blur-3xl -translate-y-1/2 translate-x-1/4 animate-pulse" />
-          <div className="absolute bottom-0 left-0 w-[600px] h-[600px] rounded-full bg-orange-500/15 blur-3xl translate-y-1/2 -translate-x-1/4 animate-pulse" style={{ animationDelay: "1s" }} />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] rounded-full bg-purple-500/10 blur-3xl animate-pulse" style={{ animationDelay: "2s" }} />
+          <div className="absolute top-0 right-0 w-[400px] h-[400px] sm:w-[600px] sm:h-[600px] lg:w-[800px] lg:h-[800px] rounded-full bg-blue-600/20 blur-3xl -translate-y-1/2 translate-x-1/4 animate-pulse overflow-hidden" />
+          <div className="absolute bottom-0 left-0 w-[300px] h-[300px] sm:w-[450px] sm:h-[450px] lg:w-[600px] lg:h-[600px] rounded-full bg-orange-500/15 blur-3xl translate-y-1/2 -translate-x-1/4 animate-pulse overflow-hidden" style={{ animationDelay: "1s" }} />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200px] h-[200px] sm:w-[300px] sm:h-[300px] lg:w-[400px] lg:h-[400px] rounded-full bg-purple-500/10 blur-3xl animate-pulse overflow-hidden" style={{ animationDelay: "2s" }} />
 
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 lg:pt-24 pb-16 lg:pb-32">
             <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
