@@ -53,9 +53,24 @@ export default function AccessoriesGallery() {
   const [filter, setFilter]     = useState<Category>("all");
   const [page, setPage]         = useState<number>(1);
   const [selected, setSelected] = useState<AccessoryItem | null>(null);
-  const [filterTop, setFilterTop] = useState<number>(0);
+  const [filterTop, setFilterTop] = useState<number>(56); // Mobile header height (~56px)
   const [filterVisible, setFilterVisible] = useState(true);
   const gridRef = useRef<HTMLDivElement>(null);
+
+  // Update filter top position based on screen size
+  useEffect(() => {
+    const updateFilterTop = () => {
+      if (window.innerWidth >= 1024) {
+        setFilterTop(0); // Desktop: stick to top
+      } else {
+        setFilterTop(56); // Mobile: stick below header
+      }
+    };
+
+    updateFilterTop();
+    window.addEventListener("resize", updateFilterTop);
+    return () => window.removeEventListener("resize", updateFilterTop);
+  }, []);
 
   // Track when the gallery grid ends to fade out the filter bar
   useEffect(() => {
