@@ -53,36 +53,14 @@ export default function AccessoriesGallery() {
   const [filter, setFilter]     = useState<Category>("all");
   const [page, setPage]         = useState<number>(1);
   const [selected, setSelected] = useState<AccessoryItem | null>(null);
-  const [filterTop, setFilterTop] = useState<number>(56); // Mobile header height (~56px)
+  const [filterTop, setFilterTop] = useState<number>(0);
   const [filterVisible, setFilterVisible] = useState(true);
   const gridRef = useRef<HTMLDivElement>(null);
 
-  // Update filter top position based on screen size and header presence
+  // Simple sticky positioning - stick to top for now
   useEffect(() => {
-    const updateFilterTop = () => {
-      const mobileHeader = document.querySelector('header.lg\\:hidden');
-      const desktopHeader = document.querySelector('.site-header');
-
-      if (window.innerWidth >= 1024) {
-        // Desktop: account for desktop header with top-6 (24px from top)
-        if (desktopHeader) {
-          setFilterTop(desktopHeader.offsetHeight + 24); // Header height + top-6 spacing
-        } else {
-          setFilterTop(0);
-        }
-      } else {
-        // Mobile: account for mobile header at top:0
-        if (mobileHeader) {
-          setFilterTop(mobileHeader.offsetHeight);
-        } else {
-          setFilterTop(56); // Fallback
-        }
-      }
-    };
-
-    updateFilterTop();
-    window.addEventListener("resize", updateFilterTop);
-    return () => window.removeEventListener("resize", updateFilterTop);
+    // Will adjust for headers later once basic sticky works
+    setFilterTop(0);
   }, []);
 
   // Track when the gallery grid ends to fade out the filter bar
