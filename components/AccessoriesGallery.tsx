@@ -64,14 +64,14 @@ export default function AccessoriesGallery() {
       const desktopHeader = document.querySelector('.site-header');
 
       if (window.innerWidth >= 1024) {
-        // Desktop: account for desktop header with top-6
+        // Desktop: account for desktop header with top-6 (24px from top)
         if (desktopHeader) {
-          setFilterTop(desktopHeader.offsetHeight + 24); // Header height + top-6 (24px)
+          setFilterTop(desktopHeader.offsetHeight + 24); // Header height + top-6 spacing
         } else {
           setFilterTop(0);
         }
       } else {
-        // Mobile: account for mobile header
+        // Mobile: account for mobile header at top:0
         if (mobileHeader) {
           setFilterTop(mobileHeader.offsetHeight);
         } else {
@@ -129,12 +129,10 @@ export default function AccessoriesGallery() {
     <div>
       {/* ── FILTER BAR ── */}
       <div
-        className="filter-bar z-[60] bg-white border-b border-slate-100 shadow-sm transition-opacity duration-300"
+        className="filter-bar z-40 bg-white border-b border-slate-100 shadow-sm transition-opacity duration-300"
         style={{
-          position: "fixed",
+          position: "sticky",
           top: filterTop,
-          left: 0,
-          right: 0,
           transition: "top 0.3s ease",
           opacity: filterVisible ? 1 : 0,
           pointerEvents: filterVisible ? "auto" : "none"
