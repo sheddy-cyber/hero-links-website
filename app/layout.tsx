@@ -1,19 +1,12 @@
 import type { Metadata } from "next";
-import { Archivo_Black, DM_Sans } from "next/font/google";
+import { Raleway } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
 
-const archivoBlack = Archivo_Black({
+const raleway = Raleway({
   subsets: ["latin"],
-  weight: ["400"],
-  variable: "--font-archivo-black",
-  display: "swap",
-});
-
-const dmSans = DM_Sans({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-dm-sans",
+  weight: ["300", "400", "500", "600", "700", "800", "900"],
+  variable: "--font-raleway",
   display: "swap",
 });
 
@@ -144,7 +137,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${archivoBlack.variable} ${dmSans.variable}`}
+      className={`${raleway.variable}`}
     >
       <body>
         <SmoothScroll />
