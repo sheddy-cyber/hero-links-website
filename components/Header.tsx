@@ -133,11 +133,11 @@ export default function Header() {
             onClick={close}
           >
             <Image
-              src="/images/logo1.png"
+              src="/images/logo.png"
               alt="Hero Link Systems Limited Logo"
-              width={32}
-              height={28}
-              className="rounded-lg"
+              width={34}
+              height={34}
+              className="rounded-lg object-contain"
               priority
             />
             <div>
@@ -183,14 +183,14 @@ export default function Header() {
           >
             <div className="relative">
               <Image
-                src="/images/logo1.png"
+                src="/images/logo.png"
                 alt="Hero Link Systems Limited Logo"
                 width={38}
-                height={34}
-                className="rounded-lg transition-transform group-hover:scale-110"
+                height={38}
+                className="rounded-lg transition-transform group-hover:scale-110 object-contain"
                 priority
               />
-              <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 to-orange-500 rounded-lg opacity-0 group-hover:opacity-20 blur transition-opacity" />
+              <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-lg opacity-0 group-hover:opacity-20 blur transition-opacity" />
             </div>
             <div className="hidden sm:block">
               <div className="font-heading font-bold text-[10px] text-slate-900 leading-tight group-hover:text-blue-600 transition-colors">

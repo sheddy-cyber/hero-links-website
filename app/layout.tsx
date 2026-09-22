@@ -50,8 +50,13 @@ export const metadata: Metadata = {
     images: ["/images/computer_lab.jpg"],
   },
   icons: {
-    icon: "/images/favicon-16x16.png",
-    apple: "/images/logo1.png",
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/images/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/images/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/images/logo.png", sizes: "192x192", type: "image/png" },
+    ],
+    apple: "/images/logo.png",
   },
 };
 
@@ -66,7 +71,7 @@ export default function RootLayout({
     name: "Hero Link Systems Limited",
     alternateName: "Hero Link Systems",
     url: siteUrl,
-    logo: `${siteUrl}/images/logo1.png`,
+    logo: `${siteUrl}/images/logo.png`,
     image: `${siteUrl}/images/computer_lab.jpg`,
     description:
       "Leading computer training centre in Ibeju-Lekki, Lagos offering professional IT courses, computer maintenance, and equipment sales.",

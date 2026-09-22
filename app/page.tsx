@@ -177,8 +177,8 @@ export default function Home() {
                   id="hero-heading"
                   className="font-heading text-3xl sm:text-4xl lg:text-6xl font-bold leading-tight"
                 >
-                  Build Real Skills.{" "}
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-orange-400">
+                  <span className="block">Build Real Skills.</span>
+                  <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-orange-400">
                     Get Hired.
                   </span>
                 </h1>

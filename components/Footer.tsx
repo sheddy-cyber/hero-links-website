@@ -12,8 +12,10 @@ export default function Footer() {
           <div className="lg:col-span-1">
             <div className="flex items-center gap-3 mb-6">
               <div className="relative">
-                <Image src="/images/logo1.png" alt="Hero Link Systems Limited" width={48} height={42} className="rounded-xl brightness-90" />
-                <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 to-orange-500 rounded-xl opacity-20 blur" />
+                <div className="w-12 h-12 rounded-xl bg-white p-1.5 flex items-center justify-center shadow-lg shadow-black/20">
+                  <Image src="/images/logo.png" alt="Hero Link Systems Limited" width={40} height={40} className="object-contain" />
+                </div>
+                <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-xl opacity-20 blur -z-10" />
               </div>
               <span className="font-heading font-bold text-white text-base leading-tight">
                 Hero Link<br />Systems Limited
