@@ -205,10 +205,13 @@ export default function AccessoriesGallery() {
             <button
               type="button"
               onClick={() => setPage((p) => p + 1)}
-              className="inline-flex items-center gap-2 px-8 py-3.5 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-semibold rounded-xl shadow-sm hover:shadow-md transition-all duration-150 cursor-pointer border-0"
+              className="inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3.5 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-semibold rounded-xl shadow-sm hover:shadow-md transition-all duration-150 cursor-pointer border-0"
             >
               <PlusCircle className="w-[17px] h-[17px]" />
-              Load More Items ({total - visible.length} remaining)
+              <span>
+                Load More Items
+                <span className="hidden sm:inline"> ({total - visible.length} remaining)</span>
+              </span>
             </button>
           ) : (
             <span className="inline-flex items-center gap-2 px-6 py-3 bg-slate-100 text-slate-500 rounded-xl text-sm font-medium">
