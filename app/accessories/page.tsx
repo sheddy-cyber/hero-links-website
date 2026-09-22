@@ -48,7 +48,7 @@ export default function AccessoriesPage() {
   return (
     <>
       <Header />
-      <main id="main" className="pt-14 lg:pt-6">
+      <main id="main" className="pt-14 lg:pt-0">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

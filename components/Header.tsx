@@ -17,6 +17,7 @@ import {
   ShoppingBag,
   MessageSquare,
 } from "lucide-react";
+import TopTickerBar from "@/components/TopTickerBar";
 
 const navLinks = [
   { href: "/#home", label: "Home", icon: Home },
@@ -120,12 +121,15 @@ export default function Header() {
 
   return (
     <>
+      {/* ── DESKTOP TOP ANNOUNCEMENT TICKER ── */}
+      <TopTickerBar />
+
       {/* ── MOBILE HEADER WITH HAMBURGER MENU ── */}
       <header
         role="banner"
         className="lg:hidden fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-xl border-b border-slate-200/50"
       >
-        <div className="flex items-center justify-between px-4 py-3">
+        <div className="flex items-center justify-between px-4 h-14">
           {/* Brand */}
           <Link
             href="/"
@@ -166,9 +170,13 @@ export default function Header() {
       {/* ── DESKTOP FLOATING ISLAND NAVIGATION ── */}
       <header
         role="banner"
-        style={{ transition: "transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease" }}
+        style={{
+          transition:
+            "transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease, top 0.3s ease",
+        }}
         className={[
-          "site-header fixed top-6 left-1/2 -translate-x-1/2 z-50 hidden lg:block",
+          "site-header fixed left-1/2 -translate-x-1/2 z-50 hidden lg:block",
+          scrolled ? "top-3" : "top-12",
           "bg-white/90 backdrop-blur-xl",
           "rounded-2xl shadow-2xl shadow-slate-900/10 border border-white/50",
           hidden ? "-translate-y-full opacity-0" : "translate-y-0 opacity-100",

@@ -53,64 +53,43 @@ export default function AccessoriesGallery() {
   const [filter, setFilter]     = useState<Category>("all");
   const [page, setPage]         = useState<number>(1);
   const [selected, setSelected] = useState<AccessoryItem | null>(null);
-  const [filterTop, setFilterTop] = useState<number>(0);
   const [filterVisible, setFilterVisible] = useState(true);
-  const [isSticky, setIsSticky] = useState(false);
-  const [originalTop, setOriginalTop] = useState<number>(0);
-  const gridRef = useRef<HTMLDivElement>(null);
-  const filterRef = useRef<HTMLDivElement>(null);
+  const galleryRef = useRef<HTMLDivElement>(null);
 
-  // Simulate sticky positioning using fixed position
   useEffect(() => {
-    const filterElement = filterRef.current;
-    if (!filterElement) return;
+    let ticking = false;
 
-    // Store original position relative to viewport
-    const rect = filterElement.getBoundingClientRect();
-    setOriginalTop(rect.top);
+    const checkVisibility = () => {
+      const gallery = galleryRef.current;
+      if (!gallery) return;
 
-    const handleScroll = () => {
-      const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-      const filterRect = filterElement.getBoundingClientRect();
+      const rect = gallery.getBoundingClientRect();
+      // On mobile (< 1024px), the sticky bar sits at top-14 (56px) with ~48px height -> bottom edge is ~105px.
+      // On desktop (>= 1024px), the sticky bar sits at top-0 with ~52px height -> bottom edge is ~52px.
+      const threshold = window.innerWidth >= 1024 ? 60 : 115;
 
-      // Check if filter bar has reached its sticky position
-      if (filterRect.top <= 0) {
-        setIsSticky(true);
-      } else {
-        setIsSticky(false);
+      // Disappear when the gallery items have scrolled past the filter bar
+      const isPastBottom = rect.bottom < threshold;
+      setFilterVisible(!isPastBottom);
+      ticking = false;
+    };
+
+    const onScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(checkVisibility);
+        ticking = true;
       }
     };
 
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll(); // Initial check
-
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  // Track when the gallery grid ends to fade out the filter bar
-  useEffect(() => {
-    const handleScroll = () => {
-      const grid = gridRef.current;
-      if (!grid) return;
-
-      const gridRect = grid.getBoundingClientRect();
-      const windowHeight = window.innerHeight;
-
-      // Hide filter bar when grid is scrolled past viewport
-      if (gridRect.bottom < 100) {
-        setFilterVisible(false);
-      } else {
-        setFilterVisible(true);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll(); // Initial check
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll, { passive: true });
+    checkVisibility(); // Initial check
 
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
     };
-  }, [filter, page]); // Re-observe when filter or page changes
+  }, [filter, page]);
 
   const filtered: AccessoryItem[] =
     filter === "all"
@@ -128,20 +107,19 @@ export default function AccessoriesGallery() {
   }
 
   return (
-    <div>
-      {/* ── FILTER BAR ── */}
-      <div
-        ref={filterRef}
-        className="filter-bar z-40 bg-white border-b border-slate-100 shadow-sm transition-opacity duration-300"
-        style={{
-          position: isSticky ? "fixed" : "relative",
-          top: isSticky ? filterTop : "auto",
-          left: isSticky ? 0 : "auto",
-          right: isSticky ? 0 : "auto",
-          opacity: filterVisible ? 1 : 0,
-          pointerEvents: filterVisible ? "auto" : "none"
-        }}
-      >
+    <>
+      {/* ── GALLERY & FILTER SECTION ── */}
+      <div ref={galleryRef} className="relative">
+        {/* ── FILTER BAR ── */}
+        <div
+          className={[
+            "filter-bar sticky top-14 lg:top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-sm",
+            "transition-all duration-300 ease-out",
+            filterVisible
+              ? "opacity-100 translate-y-0 pointer-events-auto"
+              : "opacity-0 -translate-y-2 pointer-events-none",
+          ].join(" ")}
+        >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="filter-scroll-row flex items-center gap-1.5 sm:gap-2 py-2 sm:py-3 overflow-x-auto">
             {CATEGORY_KEYS.map((cat) => (
@@ -184,7 +162,7 @@ export default function AccessoriesGallery() {
       </div>
 
       {/* ── PRODUCT GRID ── */}
-      <div ref={gridRef} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-10">
         {visible.length === 0 ? (
           <p className="py-20 text-center text-slate-400 text-sm">
             No items found in this category.
@@ -240,6 +218,7 @@ export default function AccessoriesGallery() {
           )}
         </div>
       </div>
+    </div>
 
       {/* ── READY TO PURCHASE CTA ── */}
       <section className="bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 py-16">
@@ -356,6 +335,6 @@ export default function AccessoriesGallery() {
           </div>
         </div>
       )}
-    </div>
+    </>
   );
 }

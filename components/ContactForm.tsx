@@ -42,7 +42,7 @@ export default function ContactForm() {
     }
   };
 
-  const inputCls = "w-full px-4 py-3 rounded-xl border border-slate-200 bg-white text-slate-900 placeholder-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all";
+  const inputCls = "w-full px-3.5 sm:px-4 py-2.5 sm:py-3 rounded-xl border border-slate-200 bg-white text-slate-900 placeholder-slate-400 text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all";
   const labelCls = "flex items-center gap-1.5 text-xs font-semibold text-slate-700 mb-1.5 uppercase tracking-wide";
 
   return (
@@ -51,10 +51,10 @@ export default function ContactForm() {
         ref={formRef}
         onSubmit={handleSubmit}
         noValidate
-        className="bg-white rounded-2xl shadow-lg border border-slate-100 p-8"
+        className="bg-white rounded-2xl sm:rounded-3xl shadow-lg border border-slate-100 p-5 sm:p-7 lg:p-8"
       >
-        <h3 className="flex items-center gap-2 text-xl font-bold text-slate-900 mb-6">
-          <MessageCircle size={20} className="text-blue-600" />
+        <h3 className="flex items-center gap-2 text-lg sm:text-xl font-bold text-slate-900 mb-5 sm:mb-6">
+          <MessageCircle size={20} className="text-blue-600 shrink-0" />
           Enquiry / Registration
         </h3>
 
@@ -99,24 +99,24 @@ export default function ContactForm() {
               <MessageCircle size={12} /> Message
             </label>
             <textarea
-              id="message" name="message" rows={5}
+              id="message" name="message" rows={4}
               placeholder="Any message or particular item of enquiry..."
               className={`${inputCls} resize-none`}
             />
           </div>
         </div>
 
-        <div className="flex gap-3 mt-6">
+        <div className="flex flex-col sm:flex-row gap-3 mt-6">
           <button
             type="submit"
             disabled={status === "loading"}
-            className="flex-1 flex items-center justify-center gap-2 px-6 py-3 bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-700 disabled:opacity-60 disabled:cursor-not-allowed transition-all shadow-sm hover:shadow-md text-sm"
+            className="w-full sm:flex-1 flex items-center justify-center gap-2 px-6 py-3 sm:py-3.5 bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-700 disabled:opacity-60 disabled:cursor-not-allowed transition-all shadow-sm hover:shadow-md text-sm sm:text-base"
           >
             {status === "loading" ? <><Loader2 size={16} className="animate-spin" /> Sending...</> : <><Send size={15} /> Send Enquiry</>}
           </button>
           <button
             type="reset"
-            className="px-5 py-3 border border-slate-200 text-slate-600 font-medium rounded-xl hover:bg-slate-50 transition-all text-sm flex items-center gap-2"
+            className="w-full sm:w-auto px-5 py-3 border border-slate-200 text-slate-600 font-medium rounded-xl hover:bg-slate-50 transition-all text-sm flex items-center justify-center gap-2"
           >
             <RotateCcw size={14} /> Reset
           </button>
@@ -127,10 +127,10 @@ export default function ContactForm() {
       {modal && (
         <div
           role="dialog" aria-modal="true"
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4"
           onClick={(e) => { if (e.target === e.currentTarget) setModal(null); }}
         >
-          <div className="bg-white rounded-2xl shadow-2xl p-8 max-w-md w-full text-center animate-fade-up">
+          <div className="bg-white rounded-2xl shadow-2xl p-6 sm:p-8 max-w-md w-full text-center animate-fade-up">
             {modal.type === "success" ? (
               <>
                 <CheckCircle size={52} className="text-green-500 mx-auto mb-4" />

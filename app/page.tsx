@@ -144,7 +144,7 @@ export default function Home() {
     <>
       <Header />
       <ScrollAnimator />
-      <main id="main" className="pt-14 lg:pt-6">
+      <main id="main" className="pt-14 lg:pt-0">
         {/* ── HERO ── */}
         <section
           id="home"
@@ -336,19 +336,19 @@ export default function Home() {
                   </div>
                 </div>
 
-                <div className="grid grid-cols-2 gap-5 mt-8">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mt-6 sm:mt-8">
                   {[
                     { icon: ShieldCheck, label: "Accredited Center" },
                     { icon: TrendingUp, label: "15+ Years Experience" },
                   ].map(({ icon: Icon, label }) => (
                     <div
                       key={label}
-                      className="flex items-center gap-4 bg-gradient-to-br from-slate-50 to-slate-100 rounded-2xl px-5 py-4 border border-slate-200"
+                      className="flex items-center gap-3 sm:gap-4 bg-gradient-to-br from-slate-50 to-slate-100 rounded-2xl px-4 py-3.5 sm:px-5 sm:py-4 border border-slate-200"
                     >
                       <div className="w-10 h-10 rounded-xl bg-blue-100 flex items-center justify-center shrink-0">
                         <Icon size={20} className="text-blue-600" />
                       </div>
-                      <span className="text-sm font-semibold text-slate-700">
+                      <span className="text-sm font-semibold text-slate-700 leading-snug">
                         {label}
                       </span>
                     </div>
@@ -695,22 +695,22 @@ export default function Home() {
         <section
           id="contact"
           aria-labelledby="contact-heading"
-          className="py-20 lg:py-28 bg-gradient-to-b from-slate-50 to-white"
+          className="py-12 sm:py-16 lg:py-24 bg-gradient-to-b from-slate-50 to-white"
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid lg:grid-cols-2 gap-16 lg:gap-20">
+            <div className="grid lg:grid-cols-2 gap-10 sm:gap-14 lg:gap-20 items-start">
               {/* Info */}
               <div className="animate-on-scroll">
-                <span className="inline-block text-xs font-bold tracking-widest text-blue-600 uppercase mb-4">
+                <span className="inline-block text-xs font-bold tracking-widest text-blue-600 uppercase mb-3 sm:mb-4">
                   Get In Touch
                 </span>
                 <h2
                   id="contact-heading"
-                  className="font-heading text-4xl sm:text-5xl font-bold text-slate-900 mb-6"
+                  className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-4 sm:mb-6"
                 >
                   Contact &amp; Visit
                 </h2>
-                <p className="text-slate-600 text-lg mb-10">
+                <p className="text-slate-600 text-base sm:text-lg mb-8 sm:mb-10 leading-relaxed">
                   <strong className="text-slate-900">
                     Hero Link Systems Limited
                   </strong>
@@ -719,7 +719,7 @@ export default function Home() {
                   State, Nigeria.
                 </p>
 
-                <div className="space-y-6 mb-10">
+                <div className="space-y-4 sm:space-y-6 mb-8 sm:mb-10">
                   {[
                     {
                       icon: Phone,
@@ -727,7 +727,7 @@ export default function Home() {
                       content: (
                         <a
                           href="tel:+2348032310325"
-                          className="text-blue-600 hover:text-blue-700 font-semibold text-lg"
+                          className="text-blue-600 hover:text-blue-700 font-semibold text-base sm:text-lg"
                         >
                           +234 803 231 0325
                         </a>
@@ -738,7 +738,7 @@ export default function Home() {
                       content: (
                         <a
                           href="mailto:modemcomputers247@gmail.com"
-                          className="text-blue-600 hover:text-blue-700 font-semibold text-lg"
+                          className="text-blue-600 hover:text-blue-700 font-semibold text-base sm:text-lg break-all sm:break-normal"
                         >
                           modemcomputers247@gmail.com
                         </a>
@@ -749,18 +749,18 @@ export default function Home() {
                       icon: Clock,
                       label: "Hours",
                       content: (
-                        <span className="font-semibold text-slate-700 text-lg">
+                        <span className="font-semibold text-slate-700 text-base sm:text-lg">
                           Mon–Sat: 9AM – 5PM
                         </span>
                       ),
                     },
                   ].map(({ icon: Icon, label, content }) => (
-                    <div key={label} className="flex items-start gap-4">
-                      <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center shrink-0">
-                        <Icon size={24} className="text-blue-600" />
+                    <div key={label} className="flex items-start gap-3.5 sm:gap-4">
+                      <div className="w-11 h-11 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center shrink-0">
+                        <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-blue-600" />
                       </div>
-                      <div>
-                        <div className="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-1">
+                      <div className="min-w-0 flex-1">
+                        <div className="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-0.5 sm:mb-1">
                           {label}
                         </div>
                         <div className="text-base">{content}</div>
@@ -769,7 +769,7 @@ export default function Home() {
                   ))}
                 </div>
 
-                <div className="rounded-3xl overflow-hidden shadow-xl border border-slate-200 h-80">
+                <div className="rounded-2xl sm:rounded-3xl overflow-hidden shadow-lg sm:shadow-xl border border-slate-200 h-64 sm:h-72 lg:h-80 w-full">
                   <iframe
                     title="Hero Link Systems Limited location on Google Maps"
                     src="https://www.google.com/maps?q=Elemoro+Shopping+Complex,+Bogije+Bus+stop+Ibeju-Lekki,+Lagos&output=embed"
